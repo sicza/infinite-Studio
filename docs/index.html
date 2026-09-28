@@ -18,13 +18,13 @@
     }
     html[data-theme="light"]{
       --bg:#f1efe8;--surface:#faf9f4;--surface-2:#f3f0e8;--surface-3:#e9e5dc;
-      --ink:#171613;--muted:#646159;--faint:#8a867c;--line:#d5d0c5;--line-strong:#aaa49a;
+      --ink:#171613;--muted:#5f5b53;--faint:#68645c;--line:#d5d0c5;--line-strong:#918b81;
       --accent:#e85117;--accent-soft:#f6dfd3;--good:#337546;--warn:#9b641f;--bad:#a23f39;
       --shadow:0 18px 48px rgba(75,61,44,.12)
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:82px}
-    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.68 var(--sans);overflow-x:hidden}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.68 var(--sans);overflow-x:hidden;line-break:strict;word-break:normal;overflow-wrap:break-word}
     button,input,textarea,select{font:inherit}
     button{color:inherit}
     a{color:inherit;text-underline-offset:4px}
@@ -140,18 +140,64 @@
     @media(max-width:780px){
       .topbar{height:58px}.topbar-inner{padding:0 12px;gap:8px}.brand{min-width:0}.brand small,.version,.search-wrap{display:none}.mobile-menu{display:block}.tool-button{padding:0 11px}.app{display:block;min-height:calc(100vh - 58px)}.sidebar{position:fixed;z-index:120;left:0;top:58px;width:min(86vw,320px);height:calc(100vh - 58px);transform:translateX(-105%);transition:.25s var(--ease);box-shadow:var(--shadow);border-right:1px solid var(--line)}.sidebar.open{transform:none}.stage{padding:28px 18px 64px}.home-head{padding-bottom:34px}.home-head h1{font-size:50px;max-width:10ch}.home-intro p{font-size:17px}.quick-start{grid-template-columns:1fr}.quick-step,.quick-step:nth-child(3){border-right:0;border-top:1px solid var(--line);min-height:0;padding:18px 2px}.quick-step:first-child{border-top:0}.quick-step b{margin:8px 0 2px}.section-head{display:block;margin-top:46px}.section-head p{margin-top:10px}.module-row{grid-template-columns:40px 1fr 20px;gap:10px;padding:18px 0}.module-row p,.module-row .output{display:none}.module-row:hover{padding-left:8px;padding-right:8px}.system-map{grid-template-columns:1fr 1fr}.map-node{min-height:112px;border-top:1px solid var(--line)}.map-node:nth-child(-n+2){border-top:0}.map-node:nth-child(2n){border-right:0}.map-node:nth-child(4){border-right:0}.module-title-row{display:block}.module-head h1{font-size:46px}.status{margin-top:18px}.module-lead{font-size:16px}.module-flow{display:block}.module-flow li{min-height:52px;border-right:0;border-bottom:1px solid var(--line);padding:12px 42px 12px 14px}.module-flow li:last-child{border-bottom:0}.module-flow li:not(:last-child):after{content:"↓";right:16px}.fact-strip{grid-template-columns:1fr}.fact-cell,.fact-cell+ .fact-cell{padding:18px 0;border-right:0;border-bottom:1px solid var(--line)}.fact-cell:last-child{border-bottom:0}.workflow-head{display:block}.workflow-head p{margin-top:5px}.workflow{grid-template-columns:1fr;gap:18px}.node-detail{position:static;min-height:0;padding:20px}.detail-grid{grid-template-columns:1fr}.detail-item,.detail-item:nth-child(even){padding:14px 0;border-left:0}.chapter-foot{grid-template-columns:1fr}.foot-col,.foot-col+ .foot-col{padding:22px 0;border-left:0;border-bottom:1px solid var(--line)}.foot-col:last-child{border-bottom:0}.evidence-body{grid-template-columns:1fr}.life-panel{grid-template-columns:1fr}.stop-grid{grid-template-columns:1fr}.stop-item,.stop-item:nth-child(3){min-height:0;border-right:0;border-top:1px solid var(--line)}.stop-item:first-child{border-top:0}.builder{grid-template-columns:1fr}.legend{grid-template-columns:1fr}.legend div{border-right:0;border-bottom:1px solid var(--line)}.route-table{display:block;overflow:auto}.footer{display:block}.footer span{display:block;margin-top:6px}
     }
+    .title-line{display:block}
+    .keep{white-space:nowrap}
+    p,li,.module-row .output{text-wrap:pretty}
+    .home-head h1,.module-head h1,.manual-head h1{max-width:none;text-wrap:pretty;word-break:keep-all;overflow-wrap:normal}
+    .module-row{grid-template-columns:58px minmax(170px,.72fr) minmax(230px,1.1fr) minmax(210px,.9fr) 24px}
+    .module-row .row-copy{display:grid;gap:3px}
+    .module-row .row-copy b{font-size:10px;color:var(--faint);font-weight:650}
+    .module-row .output{font-size:12px;line-height:1.5;color:var(--muted)}
+    .guide{padding:34px 0 8px;border-bottom:1px solid var(--line)}
+    .guide-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:14px}
+    .guide-head h2{font-size:24px;line-height:1.2;margin:0;letter-spacing:-.02em}
+    .guide-head p{margin:0;color:var(--muted);font-size:12px}
+    .guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+    .guide-item{padding:18px 22px 20px 0;border-bottom:1px solid var(--line)}
+    .guide-item:nth-child(even){padding-left:22px;border-left:1px solid var(--line)}
+    .guide-item:last-child{grid-column:1/-1;padding-right:0}
+    .guide-item b{display:block;font-size:12px;margin-bottom:6px}
+    .guide-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.6;max-width:70ch}
+    .evidence-body.single{grid-template-columns:1fr}
+    .workflow-stage{padding:20px 4px 7px;color:var(--accent);font-size:10px;font-weight:750;letter-spacing:.08em}
+    .node-button[aria-pressed="true"]{color:var(--ink)}
+    .branch-tab[aria-pressed="true"],.life-button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+    .technical-note{padding:18px 0;color:var(--muted);font-size:12px}
+    @media(max-width:1100px){
+      .module-row{grid-template-columns:50px minmax(150px,.7fr) minmax(220px,1.2fr) 24px}
+      .module-row .output{display:none}
+    }
+    @media(max-width:780px){
+      .home-head h1{font-size:clamp(28px,8.5vw,36px);line-height:1.06;letter-spacing:-.025em}
+      .module-head h1{font-size:clamp(38px,11vw,48px)}
+      .manual-head h1{font-size:clamp(36px,10vw,46px)}
+      .module-row{grid-template-columns:34px minmax(0,1fr) 18px;align-items:start}
+      .module-row h3{font-size:17px}
+      .module-row .row-copy{display:grid;grid-column:2/3;margin-top:2px}
+      .module-row p{display:block;font-size:12px;line-height:1.5}
+      .module-row .output{display:block;font-size:11px;color:var(--faint)}
+      .module-row .arrow{grid-column:3;grid-row:1/3}
+      .quick-start{grid-template-columns:1fr 1fr}
+      .quick-step,.quick-step:nth-child(3){border-right:1px solid var(--line);border-top:1px solid var(--line);padding:16px 10px;min-height:118px}
+      .quick-step:nth-child(-n+2){border-top:0}.quick-step:nth-child(even){border-right:0}.quick-step:last-child{grid-column:1/-1;border-right:0;min-height:96px}
+      .guide-head{display:block}.guide-head p{margin-top:6px}
+      .guide-grid{grid-template-columns:1fr}
+      .guide-item,.guide-item:nth-child(even),.guide-item:last-child{grid-column:auto;padding:16px 0;border-left:0}
+      .module-flow{display:grid;grid-template-columns:1fr 1fr}
+      .module-flow li{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 30px 12px 12px}
+      .module-flow li:nth-child(even){border-right:0}.module-flow li:last-child{grid-column:1/-1;border-right:0}
+      .module-flow li:not(:last-child):after{content:"→";right:10px}
+    }
+    @media(max-width:380px){
+      .stage{padding-left:14px;padding-right:14px}
+      .top-actions{gap:4px}.tool-button,.mobile-menu{padding:0 9px}
+      .module-flow{grid-template-columns:1fr}.module-flow li,.module-flow li:nth-child(even){border-right:0}.module-flow li:last-child{grid-column:auto}
+      .module-flow li:not(:last-child):after{content:"↓"}
+    }
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <!--
-  THESIS: 这是一张可操作的生产地图，拒绝把 21 个内部入口平铺成产品目录。
-  OWN-WORLD: 黑、暖白、橙色组成的编辑型操作手册；长线、编号、状态与纵向节点承担结构，不用同尺寸卡片堆页面。
-  STORY: 用户先选要做的事，再看完整流程、参与点、失败恢复和正式产物，最后按同一规则发起需求。
-  FIRST VIEWPORT: 左侧十章目录；中央以大标题和五步开始法建立用法，首屏下缘直接进入模块索引；主动作是选择任务。
-  FORM: established-world precise rebuild / code-led / seed not required because the approved brief fixes the ten-chapter structure.
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-  -->
   <a class="skip" href="#content">跳到正文</a>
   <header class="topbar">
     <div class="topbar-inner">
@@ -161,7 +207,7 @@
         <span><b>InfiniteBOT Codex Workspace</b><small>第一次使用，从这里开始</small></span>
       </a>
       <div class="search-wrap">
-        <input class="search-box" id="globalSearch" type="search" placeholder="搜“社群图”“入口测试”“拆 UI”" autocomplete="off" aria-label="搜索模块和任务">
+        <input class="search-box" id="globalSearch" type="search" placeholder="搜“社群图”“入口测试”“拆 UI”" autocomplete="off" aria-label="搜索模块和任务" role="combobox" aria-autocomplete="list" aria-controls="searchResults" aria-expanded="false">
         <span class="search-key">/</span>
         <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></div>
       </div>
@@ -176,59 +222,44 @@
     <aside class="sidebar" id="sidebar" aria-label="章节目录">
       <div class="nav-label">开始</div>
       <ul class="nav-list">
-        <li><button class="nav-button active" data-view="home"><span class="nav-num">→</span><span class="nav-title">先选你要的结果</span></button></li>
+        <li><button class="nav-button active" data-view="home"><span class="nav-num">→</span><span class="nav-title">选择任务</span></button></li>
       </ul>
-      <div class="nav-label">你可以做的十类工作</div>
+      <div class="nav-label">十个模块</div>
       <ul class="nav-list" id="moduleNav"></ul>
-      <div class="nav-label">共用规则</div>
+      <div class="nav-label">共用操作</div>
       <ul class="nav-list">
-        <li><button class="nav-button" data-view="manual"><span class="nav-num">∥</span><span class="nav-title">继续、返修和交付</span></button></li>
-        <li><button class="nav-button" data-view="technical"><span class="nav-num">?</span><span class="nav-title">系统怎样认出你的任务</span></button></li>
+        <li><button class="nav-button" data-view="manual"><span class="nav-num">∥</span><span class="nav-title">任务与交付</span></button></li>
+        <li><button class="nav-button" data-view="technical"><span class="nav-num">?</span><span class="nav-title">技术附录</span></button></li>
       </ul>
-      <div class="sidebar-note"><b>以当前版本为准</b>现在能用的写“当前可用”；还没做的写“规划中”。</div>
     </aside>
     <main class="stage" id="content">
       <section class="view active" id="view-home" aria-labelledby="home-title">
         <span id="home" hidden></span>
         <div class="home-head">
-          <h1 id="home-title">先选任务，<em>再看完整流程。</em></h1>
+          <h1 id="home-title"><span class="title-line">第一次用 Workspace，</span><span class="title-line"><em>从任务开始。</em></span></h1>
           <div class="home-intro">
-            <p>你只要说清要做什么、手里有什么。Codex 会找到对应流程，做到你指定的产物。</p>
-            <button class="primary-action" id="startBtn">从十个模块开始</button>
+            <p>选一个模块，准备现有素材，说清最后要拿到什么。页面会告诉你 Codex 怎么做、哪里需要你决定。</p>
+            <button class="primary-action" id="startBtn">选择任务</button>
           </div>
         </div>
-        <div class="quick-start" aria-label="五步开始">
-          <div class="quick-step"><span class="step-num">01</span><b>放入真实资料</b><p>项目文件保持原目录和文件名。</p></div>
-          <div class="quick-step"><span class="step-num">02</span><b>让 Codex 认识项目</b><p>先整理项目事实和视觉基准。</p></div>
-          <div class="quick-step"><span class="step-num">03</span><b>说清要什么</b><p>写目标、现有素材和最后要拿到什么。</p></div>
-          <div class="quick-step"><span class="step-num">04</span><b>按步骤推进</b><p>你能看到做到哪一步，哪里需要决定。</p></div>
-          <div class="quick-step"><span class="step-num">05</span><b>拿正式版本</b><p>检查通过并登记后，才算正式交付。</p></div>
+        <div class="quick-start" aria-label="使用 Workspace 的五个步骤">
+          <div class="quick-step"><span class="step-num">01</span><b>选任务</b><p>从下面十个模块中选择。</p></div>
+          <div class="quick-step"><span class="step-num">02</span><b>给素材</b><p>提供项目文件、原图和准确文案。</p></div>
+          <div class="quick-step"><span class="step-num">03</span><b>定结果</b><p>说明要方案、提示词还是成品。</p></div>
+          <div class="quick-step"><span class="step-num">04</span><b>做决定</b><p>在标出的位置确认方向。</p></div>
+          <div class="quick-step"><span class="step-num">05</span><b>收文件</b><p>检查通过后取得正式版本。</p></div>
         </div>
         <div class="section-head" id="modules">
-          <h2>你现在要做什么？</h2>
-          <p>按你想拿到的结果选。每一类都写清要准备什么、Codex 怎么做、哪里会停、最后拿到什么。</p>
+          <h2>你要做哪类工作？</h2>
+          <p>先看典型任务和最终产物。进入模块后，再看完整流程。</p>
         </div>
         <div class="module-index" id="moduleIndex"></div>
-        <div class="section-head">
-          <h2>不管做什么，都是这八步</h2>
-          <p>研究、生成、后期和检查都会留在同一项任务里。你不用分别开好几项任务。</p>
-        </div>
-        <div class="system-map" aria-label="Workspace 共用主链">
-          <div class="map-node"><b>用户目标</b><span>说结果、素材和限制</span></div>
-          <div class="map-node"><b>听懂需求</b><span>判断属于哪类工作，只补必须的信息</span></div>
-          <div class="map-node"><b>读取你的做法</b><span>只有你开启并允许时才使用</span></div>
-          <div class="map-node"><b>检查项目资料</b><span>确认角色、Logo、玩法和视觉基准</span></div>
-          <div class="map-node"><b>开始制作</b><span>由最适合这类工作的流程负责</span></div>
-          <div class="map-node"><b>检查结果</b><span>画面判断和文件检查分开做</span></div>
-          <div class="map-node"><b>正式交付</b><span>只交检查通过的文件</span></div>
-          <div class="map-node"><b>记下反馈</b><span>把明确偏好留给下一次使用</span></div>
-        </div>
       </section>
 
       <section class="view" id="view-module" aria-live="polite"></section>
 
       <section class="view" id="view-manual" aria-labelledby="manual-title">
-        <div class="manual-head"><h1 id="manual-title">同一个目标，继续同一项任务。</h1><p>继续做、补素材和返修，都回到原任务。只有目标变了，才新建任务。</p></div>
+        <div class="manual-head"><h1 id="manual-title"><span class="title-line">目标没变，</span><span class="title-line">就继续原任务。</span></h1><p>继续做、补素材和返修都回到原任务。目标变了，再新建任务。</p></div>
         <div class="manual-section">
           <h2>先判断这句话属于哪种情况</h2>
           <p class="intro">选择后会看到应该继续哪里，以及 Codex 会保留哪些旧资料和决定。</p>
@@ -239,8 +270,8 @@
           <h2>可以停在不同产物，不必每次都做到成品</h2>
           <p class="intro">开始前先说清做到哪一步。只要提示词，就不会生成图片；只要方案，就不会把试验图当成正式成品。</p>
           <div class="stop-grid">
-            <div class="stop-item"><b>需求分析</b><p>明确目标、素材、限制、未知和判断标准。</p><code>交付 requirement lock</code></div>
-            <div class="stop-item"><b>方向方案</b><p>给出可比较的方向、差异、风险和推荐。</p><code>交付 proposal</code></div>
+            <div class="stop-item"><b>需求分析</b><p>明确目标、素材、限制、未知和判断标准。</p><code>交付已确认的需求</code></div>
+            <div class="stop-item"><b>方向方案</b><p>给出可比较的方向、差异、风险和推荐。</p><code>交付方向方案</code></div>
             <div class="stop-item"><b>需求文档</b><p>把方向写成下一位制作人员可以直接照着做的画面说明。</p><code>交付视觉需求文档</code></div>
             <div class="stop-item"><b>完整提示词包</b><p>每张图的完整提示词、参考图用途和生成要求。</p><code>停在这里不会生成图片</code></div>
             <div class="stop-item"><b>正式成品</b><p>完成生成、后期、检查和正式登记。</p><code>交付可追溯的正式版本</code></div>
@@ -252,8 +283,8 @@
           <div class="builder">
             <div class="builder-form">
               <div class="field"><label for="draftModule">任务模块</label><select id="draftModule"></select></div>
-              <div class="field"><label for="draftGoal">我要的结果</label><input id="draftGoal" placeholder="例如：周年庆活动主视觉与社群图"></div>
-              <div class="field"><label for="draftInput">现有素材</label><textarea id="draftInput" placeholder="例如：角色立绘、Logo、活动奖励、两张构图参考"></textarea></div>
+               <div class="field"><label for="draftGoal">我要的结果</label><input id="draftGoal" placeholder="例如：周年庆活动主视觉与社群图" aria-describedby="draftError" required></div>
+               <div class="field"><label for="draftInput">现有素材</label><textarea id="draftInput" placeholder="例如：角色立绘、Logo、活动奖励、两张构图参考" aria-describedby="draftError" required></textarea></div>
               <div class="field"><label for="draftLimit">必须保留 / 禁止修改</label><textarea id="draftLimit" placeholder="例如：角色身份以图1为准；Logo 不交模型重画"></textarea></div>
               <div class="field"><label for="draftOutput">做到哪一步</label><select id="draftOutput"><option>正式成品</option><option>方向方案</option><option>需求文档</option><option>完整提示词包</option><option>需求分析</option></select></div>
               <div class="field-note" id="draftError" aria-live="polite"></div>
@@ -264,21 +295,19 @@
         <div class="manual-section">
           <h2>交付前，最后检查九项</h2>
           <p class="intro">这些勾选不会自动证明文件合格。请在实际打开文件并检查后再勾。</p>
-          <div class="check-head"><b id="checkText">0 / 9 已检查</b><button class="check-all" id="checkAll">全部标记</button></div>
+            <div class="check-head"><b id="checkText">0 / 9 已检查</b></div>
           <div class="checklist" id="checklist"></div>
         </div>
       </section>
 
       <section class="view" id="view-technical" aria-labelledby="technical-title">
-        <div class="manual-head"><h1 id="technical-title">你不用记住这些名字。</h1><p>你说想做什么，Workspace 会把任务交给合适的流程。下面的表只用于查证。</p></div>
+        <div class="manual-head"><h1 id="technical-title">技术附录</h1><p>需要核对内部入口、文件和版本时，再看这里。</p></div>
         <div class="manual-section">
-          <h2>怎么看“当前可用”和“规划中”</h2>
-          <p class="intro">这四个标记只说明信息从哪里来，不需要记。</p>
+          <h2>证据状态</h2>
+          <p class="intro">这些标记只用于查证页面内容。</p>
           <div class="legend">
-            <div><b>当前可用</b><p>v8.63 的正式文件已经支持。</p></div>
-            <div><b>按现有流程整理</b><p>页面把几项现有能力合成了一条好懂的说明。</p></div>
-            <div><b>用户提出</b><p>需求已经明确，但 v8.63 还没有正式支持。</p></div>
-            <div><b>规划中</b><p>这是未来做法，不是当前功能。</p></div>
+            <div><b>VERIFIED</b><p>可从 v8.63 正式文件直接确认。</p></div>
+            <div><b>INFERRED</b><p>由多个现有步骤整理得出。</p></div>
           </div>
         </div>
         <div class="manual-section">
@@ -308,7 +337,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
           </div>
         </div>
       </section>
-      <footer class="footer"><b>InfiniteBOT Codex Workspace · v8.63</b><span>正式能力以当前 Release 为准｜规划能力单独标识</span></footer>
+      <footer class="footer"><b>InfiniteBOT Codex Workspace · v8.63</b><span>页面内容与当前正式版本对齐</span></footer>
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -316,7 +345,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
   <script>
   const modules = [
     {
-      id:'baseline',num:'01',title:'项目视觉基准',display:'先让 Codex 认识项目',aliases:'初始化 更新 baseline 重构 baseline 角色卡 品牌卡 风格基准',status:'verified',
+      id:'baseline',num:'01',title:'项目视觉基准',display:'建立、更新或重构项目的视觉依据',aliases:'初始化 更新 baseline 重构 baseline 角色卡 品牌卡 风格基准',
       intro:'先分清哪些是项目事实，哪些只是参考，再找出这个项目稳定的视觉特征。以后做图时，Codex 不必每次从零猜。',
       suitable:'第一次建立项目；新增角色、Logo、历史主视觉或参考图后更新；项目方向发生根本变化后重建。',
       inputs:'项目资料、正式角色与 Logo、历史成品、游戏截图、外部参考图和已有项目说明。',
@@ -328,16 +357,16 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'rebuild',name:'方向重建',copy:'素材身份、交付结构或项目方向发生根本变化时，重新综合全部视觉资料并发布新的完整基准。当前版本没有单独的“重建”按钮。'}
       ],
       nodes:[
-        ['先看项目里有什么','Codex','扫描真实项目资料，记录哪些文件属于项目，哪些属于视觉参考。','Codex 知道项目资料是否齐全，能不能开始。','关键资料缺失、目录错误，或文件无法读取。','修正资料位置，再重新检查；还不开始分析风格。'],
-        ['写清项目是什么','Codex','从真实资料中整理产品、玩法、角色、品牌和仍不知道的部分。','项目事实有来源；不知道的地方明确留空。','关键身份或产品信息无法确认。','补项目资料；不拿参考图替代项目事实。'],
-        ['分清项目素材和参考图','一起确认','把正式角色、Logo、历史成品和外部参考分开。','每份材料都知道能证明什么，不能证明什么。','把外部图当成项目设定，或把历史成品只当普通参考。','改正材料身份，再重新整理来源清单。'],
-        ['看完素材，再深挖重点','Codex','素材少时逐张分析；素材很多时先全部浏览，再挑出代表方向和异常案例深挖。','没有哪个视觉方向在完全没看过的情况下被忽略。','只按文件夹分类，或有一批图没有参与判断。','重新浏览全量素材，再按真实视觉差异分组。'],
-        ['锁定角色和 Logo','Codex','逐个记录角色外形和 Logo 结构，并回看原图核对。','脸、发型、服装、色块、装备和 Logo 保护项都有依据。','记录与原图不一致，或让模型重画正式 Logo。','先改正身份记录，再继续。'],
-        ['找出项目共同特征','Codex','把所有正式证据放在一起比较，找共同的构图、镜头、色光和信息顺序。','能用几句话说清这个项目为什么看起来像它自己。','只得到“高级、冲击力、层次清楚”这类任何项目都能用的话。','回到具体画面，找项目自己的组合关系。'],
-        ['主动找反例','Codex','拿每条结论去检查不符合它的历史成品。','结论只在真实成立的范围内使用。','大量反例被忽略，或者结论不能改变下一稿。','缩小适用范围，降级为偶尔使用，或删除。'],
-        ['分清常用做法和最低线','Codex','把历史常用方向与“低于它就不合格”的要求分开。','知道什么时候沿用旧方向，也知道哪些底线不能破。','把高频构图写成强制规则，或两个方向实际没有区别。','合并重复方向；把偏好从最低线里移出。'],
-        ['留出可以突破的地方','一起确认','标出已成熟的方向、证据不足的地方和可以试的新解法。','新需求可以做新方向，同时不丢项目身份。','把历史做法当成只能照抄的清单。','保留身份和最低线，允许构图、叙事或材质重新设计。'],
-        ['复核并发布正式基准','Codex','独立检查身份、空间、动作、界面、光色和文字，再发布唯一正式版本。','以后只读这份基准，也能从正确方向开始。','关键事实看错，或基准不能指导下一稿。','带着具体缺口回到前面的分析；没有新证据时不反复改写。']
+        ['先看项目里有什么','codex','扫描真实项目资料，记录哪些文件属于项目，哪些属于视觉参考。','Codex 知道项目资料是否齐全，能不能开始。','关键资料缺失、目录错误，或文件无法读取。','修正资料位置，再重新检查；还不开始分析风格。'],
+        ['写清项目是什么','codex','从真实资料中整理产品、玩法、角色、品牌和仍不知道的部分。','项目事实有来源；不知道的地方明确留空。','关键身份或产品信息无法确认。','补项目资料；不拿参考图替代项目事实。'],
+        ['分清项目素材和参考图','joint','把正式角色、Logo、历史成品和外部参考分开。','每份材料都知道能证明什么，不能证明什么。','把外部图当成项目设定，或把历史成品只当普通参考。','改正材料身份，再重新整理来源清单。'],
+        ['看完素材，再深挖重点','codex','素材少时逐张分析；素材很多时先全部浏览，再挑出代表方向和异常案例深挖。','没有哪个视觉方向在完全没看过的情况下被忽略。','只按文件夹分类，或有一批图没有参与判断。','重新浏览全量素材，再按真实视觉差异分组。'],
+        ['锁定角色和 Logo','codex','逐个记录角色外形和 Logo 结构，并回看原图核对。','脸、发型、服装、色块、装备和 Logo 保护项都有依据。','记录与原图不一致，或让模型重画正式 Logo。','先改正身份记录，再继续。'],
+        ['找出项目共同特征','codex','把所有正式证据放在一起比较，找共同的构图、镜头、色光和信息顺序。','能用几句话说清这个项目为什么看起来像它自己。','只得到“高级、冲击力、层次清楚”这类任何项目都能用的话。','回到具体画面，找项目自己的组合关系。'],
+        ['主动找反例','codex','拿每条结论去检查不符合它的历史成品。','结论只在真实成立的范围内使用。','大量反例被忽略，或者结论不能改变下一稿。','缩小适用范围，降级为偶尔使用，或删除。'],
+        ['分清常用做法和最低线','codex','把历史常用方向与“低于它就不合格”的要求分开。','知道什么时候沿用旧方向，也知道哪些底线不能破。','把高频构图写成强制规则，或两个方向实际没有区别。','合并重复方向；把偏好从最低线里移出。'],
+        ['留出可以突破的地方','joint','标出已成熟的方向、证据不足的地方和可以试的新解法。','新需求可以做新方向，同时不丢项目身份。','把历史做法当成只能照抄的清单。','保留身份和最低线，允许构图、叙事或材质重新设计。'],
+        ['复核并发布正式基准','codex','独立检查身份、空间、动作、界面、光色和文字，再发布唯一正式版本。','以后只读这份基准，也能从正确方向开始。','关键事实看错，或基准不能指导下一稿。','带着具体缺口回到前面的分析；没有新证据时不反复改写。']
       ],
       artifacts:['项目说明','角色与品牌制作卡','分析记录','正式项目视觉基准','版本索引和发布记录'],
       blocks:['项目身份或素材用途互相冲突','关键正式素材无法读取','独立复核发现核心判断错误','正式视觉基准与当前文件不一致'],
@@ -345,7 +374,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary: wxian-visual-baselines\n辅助身份: wxian-project-style-index\n正式主文件: project/baselines/project-visual-standard.md\n内部完成: complete-internal'
     },
     {
-      id:'image',num:'02',title:'生图需求',display:'做图、改图和二创',aliases:'banner 社群图 活动图 玩法图 互动图 二创 改图 提示词包 生图 工作流 需求文档',status:'verified',
+      id:'image',num:'02',title:'生图需求',display:'制作 Banner、社群图、玩法图、互动图与二创图',aliases:'banner 社群图 活动图 玩法图 互动图 二创 改图 提示词包 生图 工作流 需求文档',
       intro:'你可以只要分析、方向、需求文档或完整提示词，也可以一直做到正式成品。Banner、活动图、玩法图和互动图用同一套基本步骤，但各有自己的判断条件。',
       suitable:'需要直接做图、改图、活动传播图、玩法截图式视觉、互动谜题图，或只要视觉需求文档和提示词。',
       inputs:'目标、用途、尺寸、准确文案、项目素材、参考图、必须保留项、禁止项，以及希望做到哪一步。',
@@ -359,17 +388,17 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'remix',name:'二创 / 改图',copy:'逐张说清哪些保留、哪些借用、哪些替换、哪些忽略。可以借做法，不能搬竞品角色、界面、剧情和品牌符号。'}
       ],
       nodes:[
-        ['先说要做到哪一步','一起确认','确认这次要成品、方向、需求文档还是完整提示词。','目标、载体和最后要拿到的东西已经说清。','同一项任务里出现互相冲突的交付目标。','保留一个主结果；研究和分析仍放在这项任务里。'],
-        ['检查项目视觉基准','Codex','确认角色、Logo、历史方向和最低线仍与当前项目资料一致。','这次制作知道该继承什么、可以改什么。','项目新增了资料，但视觉基准还是旧的。','先更新项目视觉基准，再做图。'],
-        ['分清每张参考图的用途','Codex','实际查看素材，说明哪张管角色、哪张管姿态、构图、风格或方法。','参考图各司其职，不会互相冲突。','只写“综合参考所有图片”，或把竞品表层内容搬进项目。','逐张写清保留、借用、替换和忽略的部分。'],
-        ['把要求定清楚','一起确认','写清目标、尺寸、准确文案、正式资产、必须保留、可以修改和禁止添加。','后面每一步都按同一份要求执行。','玩法事实、活动奖励或文案互相冲突。','只补会改变结果的信息；其他未知明确写出来。'],
-        ['把文字要求变成画面','Codex','确定主体关系、前后景、动作、镜头、光色、材质和阅读顺序。','下一位制作人员不用重新猜画面怎么组成。','还停在“有冲击力、像这个项目”这类空话。','改成看得见的动作、位置、关系和结果。'],
-        ['为每张图写完整提示词','Codex','每张图单独写一份可直接使用的提示词，并绑到对应素材。','不会出现“同上”或还要补填的占位符。','一份通用提示词套所有图，或关键要求散落在别处。','只重写受影响的那张提示词。'],
-        ['生成或编辑图片','Codex','检查模型、输入图、尺寸和提示词后，再调用生成服务。','得到有来源记录的真实原图。','模型不可用、输入图错误、尺寸不支持或提示词未绑定。','修正对应输入，不重做已经确认的方向。'],
-        ['看首版，确认方向','一起确认','打开首版，检查方向、角色、构图、信息和局部质量。','你可以确认继续，或指出具体问题。','主事件、项目事实或角色身份错误。','回到最早出错的那一步，不整条链重做。'],
-        ['补正式文字、Logo 和道具','Codex','用正式资产替换模型不擅长的文字、Logo、界面、奖励和道具。','品牌和文字不再依赖模型碰运气。','Logo 被重画、文字乱码、奖励版本错误。','换回正式资产，只重做排版和合成。'],
-        ['做多语言和尺寸版本','Codex','从确认过的母版做不同语言和尺寸，检查安全区、裁切和长文案。','所有版本保持同一角色、方向和视觉重点。','关键人物被裁，文案溢出，换语言后身份也变了。','只改排版、裁切和合成，不重开视觉方向。'],
-        ['复核并正式交付','Codex','检查文件、尺寸、文案、资产和生成记录；需要时再做一次独立画面复核。','通过检查的文件被登记为正式版本。','画面检查未通过，或交付清单缺文件。','先修具体问题，再重新检查；工作文件不当成正式交付。']
+        ['先说要做到哪一步','joint','确认这次要成品、方向、需求文档还是完整提示词。','目标、载体和最后要拿到的东西已经说清。','同一项任务里出现互相冲突的交付目标。','保留一个主结果；研究和分析仍放在这项任务里。'],
+        ['检查项目视觉基准','codex','确认角色、Logo、历史方向和最低线仍与当前项目资料一致。','这次制作知道该继承什么、可以改什么。','项目新增了资料，但视觉基准还是旧的。','先更新项目视觉基准，再做图。'],
+        ['分清每张参考图的用途','codex','实际查看素材，说明哪张管角色、哪张管姿态、构图、风格或方法。','参考图各司其职，不会互相冲突。','只写“综合参考所有图片”，或把竞品表层内容搬进项目。','逐张写清保留、借用、替换和忽略的部分。'],
+        ['把要求定清楚','joint','写清目标、尺寸、准确文案、正式资产、必须保留、可以修改和禁止添加。','后面每一步都按同一份要求执行。','玩法事实、活动奖励或文案互相冲突。','只补会改变结果的信息；其他未知明确写出来。'],
+        ['把文字要求变成画面','codex','确定主体关系、前后景、动作、镜头、光色、材质和阅读顺序。','下一位制作人员不用重新猜画面怎么组成。','还停在“有冲击力、像这个项目”这类空话。','改成看得见的动作、位置、关系和结果。'],
+        ['为每张图写完整提示词','codex','每张图单独写一份可直接使用的提示词，并绑到对应素材。','不会出现“同上”或还要补填的占位符。','一份通用提示词套所有图，或关键要求散落在别处。','只重写受影响的那张提示词。'],
+        ['生成或编辑图片','codex','检查模型、输入图、尺寸和提示词后，再调用生成服务。','得到有来源记录的真实原图。','模型不可用、输入图错误、尺寸不支持或提示词未绑定。','修正对应输入，不重做已经确认的方向。'],
+        ['看首版，确认方向','joint','打开首版，检查方向、角色、构图、信息和局部质量。','你可以确认继续，或指出具体问题。','主事件、项目事实或角色身份错误。','回到最早出错的那一步，不整条链重做。'],
+        ['补正式文字、Logo 和道具','codex','用正式资产替换模型不擅长的文字、Logo、界面、奖励和道具。','品牌和文字不再依赖模型碰运气。','Logo 被重画、文字乱码、奖励版本错误。','换回正式资产，只重做排版和合成。'],
+        ['做多语言和尺寸版本','codex','从确认过的母版做不同语言和尺寸，检查安全区、裁切和长文案。','所有版本保持同一角色、方向和视觉重点。','关键人物被裁，文案溢出，换语言后身份也变了。','只改排版、裁切和合成，不重开视觉方向。'],
+        ['复核并正式交付','codex','检查文件、尺寸、文案、资产和生成记录；需要时再做一次独立画面复核。','通过检查的文件被登记为正式版本。','画面检查未通过，或交付清单缺文件。','先修具体问题，再重新检查；工作文件不当成正式交付。']
       ],
       artifacts:['确认后的需求','视觉需求文档与画面说明','逐图提示词包和对应记录','生成原图和生成记录','最终检查与交付清单'],
       blocks:['玩法或互动规则没有可靠来源','关键角色、Logo 或道具缺失','参考图用途互相冲突','生成失败或画面检查未通过'],
@@ -377,7 +406,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary: wxian-image-production\nAPI: image-generation-api\n概念前置: sicza-game-concept-lab（需要探索时）\n分支: new-generation / image-edit / video / resize / localization / composite / postprocess-chain / visual-brief-only / prompt-only'
     },
     {
-      id:'packaging',num:'03',title:'视觉包装方案',display:'先定包装方向',aliases:'logo icon kv store 商店图 包装方案 方向池 品牌升级',status:'verified',
+      id:'packaging',num:'03',title:'视觉包装方案',display:'确定 Logo、图标、主视觉和商店图的共同方向',aliases:'logo icon kv store 商店图 包装方案 方向池 品牌升级',
       intro:'先定这套包装最想让人记住什么，再分别设计 Logo、App 图标、主视觉和商店图。方向会先比较，再决定哪些值得出图。',
       suitable:'品牌升级；设计 Logo、App 图标、主视觉或商店图；也适合在正式做图前先选包装方向。',
       inputs:'目标人群、投放渠道、地区、尺寸、准确文案、真实卖点、项目素材、项目视觉基准和参考图。',
@@ -390,15 +419,15 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'store',name:'商店图',copy:'一张图只证明一个真实卖点。整组图要有先后顺序，不能重复说同一件事。'}
       ],
       nodes:[
-        ['说清包装要解决什么','一起确认','确认受众、渠道、地区、尺寸、准确文案、真实卖点、现有素材和不能出现的内容。','这次包装有一个明确目标，后面的方向都回答同一个问题。','卖点、文案或目标互相冲突，无法确定主次。','补齐冲突事实，或先缩小到一个载体。'],
-        ['定一条共同主线','Codex','从项目卖点、角色关系和目标人群中，找出整套包装都要强调的第一印象。','Logo、图标、主视觉和商店图看起来属于同一个项目。','这条主线换到任何同类产品都成立。','回到项目自己的角色、玩法和真实素材，重新找记忆点。'],
-        ['拆解参考图','Codex','逐张说明要借的是构图、视线、关系还是信息顺序，同时标出绝对不能照搬的内容。','每张参考图都对应一个具体决定。','带入了竞品角色、装备、界面、剧情或品牌符号。','只保留做法，用本项目素材重新设计；没影响决定的参考图删除。'],
-        ['做出不同方向','Codex','先做足够多的候选，再删掉做不出来、踩红线或只是换皮的方向。','Logo、图标和主视觉默认各保留 10 个方向；商店图按每个已确认卖点做 10 个。','只是换地点、天气、镜头、颜色或材质。','改人物关系、关键动作、画面冲突或记忆方式。'],
-        ['按载体逐项检查','Codex','分别检查字形、小尺寸辨识、第一主体、主视觉因果和商店图卖点顺序。','每个方向既回答包装目标，也适合它要出现的地方。','Logo 只有材质没有结构，图标像裁图，主视觉没有事件，商店图写了不存在的玩法。','回到该载体的结构重做，不靠提示词末尾补一句。'],
-        ['比较并给出推荐','Codex','先删掉不合格和重复方向，再比较识别度、卖点表达、制作风险和适配范围。','每个推荐都说得清为什么选、和其他方向差在哪、还要验证什么。','为了凑数量保留明显较差或重复的方向。','数量可以少，但不能拿重复项充数。'],
-        ['画关键试验图','Codex','只挑最能证明差异的方向出图，并保存每张图自己的完整提示词和生成记录。','试验图能帮助判断方向，但不会被冒充为正式成品。','方向本身不成立，或同一个局部问题反复出现。','主线错误就回到方向；局部问题只针对性重试一次。'],
-        ['确认正式制作说明','一起确认','你选定方向后，锁定版式、素材、文案、尺寸、裁切、图序、后期和验收要求。','后续制作不需要再猜核心方向。','方向还没确认，就把试验图当作最终做法。','先由你确认；若允许 Codex 代选，也要留下明确授权。'],
-        ['整理成可查看的方案','Codex','把方向说明、真实试验图和对应提示词放进同一个页面，检查每项是否齐全。','你可以直接查看、筛选、对比和复制；图片与提示词一一对应。','页面只有摘要、出现“同上”，或图片找不到自己的提示词。','补回完整内容和对应关系，再登记正式版本。']
+        ['说清包装要解决什么','joint','确认受众、渠道、地区、尺寸、准确文案、真实卖点、现有素材和不能出现的内容。','这次包装有一个明确目标，后面的方向都回答同一个问题。','卖点、文案或目标互相冲突，无法确定主次。','补齐冲突事实，或先缩小到一个载体。'],
+        ['定一条共同主线','codex','从项目卖点、角色关系和目标人群中，找出整套包装都要强调的第一印象。','Logo、图标、主视觉和商店图看起来属于同一个项目。','这条主线换到任何同类产品都成立。','回到项目自己的角色、玩法和真实素材，重新找记忆点。'],
+        ['拆解参考图','codex','逐张说明要借的是构图、视线、关系还是信息顺序，同时标出绝对不能照搬的内容。','每张参考图都对应一个具体决定。','带入了竞品角色、装备、界面、剧情或品牌符号。','只保留做法，用本项目素材重新设计；没影响决定的参考图删除。'],
+        ['做出不同方向','codex','先做足够多的候选，再删掉做不出来、踩红线或只是换皮的方向。','Logo、图标和主视觉默认各保留 10 个方向；商店图按每个已确认卖点做 10 个。','只是换地点、天气、镜头、颜色或材质。','改人物关系、关键动作、画面冲突或记忆方式。'],
+        ['按载体逐项检查','codex','分别检查字形、小尺寸辨识、第一主体、主视觉因果和商店图卖点顺序。','每个方向既回答包装目标，也适合它要出现的地方。','Logo 只有材质没有结构，图标像裁图，主视觉没有事件，商店图写了不存在的玩法。','回到该载体的结构重做，不靠提示词末尾补一句。'],
+        ['比较并给出推荐','codex','先删掉不合格和重复方向，再比较识别度、卖点表达、制作风险和适配范围。','每个推荐都说得清为什么选、和其他方向差在哪、还要验证什么。','为了凑数量保留明显较差或重复的方向。','数量可以少，但不能拿重复项充数。'],
+        ['画关键试验图','codex','只挑最能证明差异的方向出图，并保存每张图自己的完整提示词和生成记录。','试验图能帮助判断方向，但不会被冒充为正式成品。','方向本身不成立，或同一个局部问题反复出现。','主线错误就回到方向；局部问题只针对性重试一次。'],
+        ['确认正式制作说明','joint','你选定方向后，锁定版式、素材、文案、尺寸、裁切、图序、后期和验收要求。','后续制作不需要再猜核心方向。','方向还没确认，就把试验图当作最终做法。','先由你确认；若允许 Codex 代选，也要留下明确授权。'],
+        ['整理成可查看的方案','codex','把方向说明、真实试验图和对应提示词放进同一个页面，检查每项是否齐全。','你可以直接查看、筛选、对比和复制；图片与提示词一一对应。','页面只有摘要、出现“同上”，或图片找不到自己的提示词。','补回完整内容和对应关系，再登记正式版本。']
       ],
       artifacts:['包装需求记录','共同主线与方向清单','比较结果与风险说明','出图计划和关键试验图','完整方案、提示词、制作说明和查看页面'],
       blocks:['项目视觉基准已经过期','包装目标无法确定','真实卖点或准确文案缺失','方向重复或试验失败'],
@@ -406,7 +435,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary: wxian-visual-packaging\n比较: wxian-visual-scorecard\n生成: image-generation-api\n交付: wxian-html-delivery + workspace-governance promote'
     },
     {
-      id:'competitive',num:'04',title:'竞品分析',display:'看竞品，找能借的方法',aliases:'竞品 美术竞品 视觉竞品 海外发行 对标 案例 compare transfer',status:'verified',
+      id:'competitive',num:'04',title:'竞品分析',display:'比较真实案例，把可用方法转成自己的方向',aliases:'竞品 美术竞品 视觉竞品 海外发行 对标 案例 compare transfer',
       intro:'先看我们和竞品怎样解决同一个传播问题，再拿掉竞品角色、剧情和品牌外壳。只把还能用自己项目重新做出来的方法留下。',
       suitable:'比较海外手游的主视觉、Banner、活动图或商店图；也适合从竞品中找可用于自身项目的新方向。',
       inputs:'想解决的视觉问题、本项目现状、目标市场和竞品素材。素材不够时，Codex 可以继续查找。',
@@ -419,16 +448,16 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'multi',name:'比较多个案例',copy:'按不同竞品计算样本。一个竞品的几十张相似图，仍然只算一个竞品的做法。'}
       ],
       nodes:[
-        ['先定比较问题','一起确认','确认要比较的是哪类图片、哪个市场、什么渠道，以及本项目现在卡在哪里。','双方材料回答同一个问题，可以放在一起比较。','把不同用户阶段、渠道或使用场景混在一起。','缩小到同一种任务，再开始收集案例。'],
-        ['看清自己的现状','Codex','读取项目视觉基准、现有包装、真实素材、玩法和卖点。','能说明本项目现在怎么做，哪些地方还没有证据。','自己还没有可比做法，却直接说落后或存在空缺。','把没证据的部分写成未知，用真实素材和卖点作参照。'],
-        ['找齐竞品原始素材','Codex','优先从官方或可靠来源找主视觉、Banner、活动图和商店图。','每个案例都有真实图片、来源、时间、市场和大致用途。','只有搜索摘要、二手转载或看不到原图。','继续找原始页面；用途查不到时，只分析画面本身。'],
-        ['确认素材能证明什么','Codex','把“从画面直接看见的”与“需要其他资料才能确认的用途或玩法”分开。','每个判断都有对应证据，不会越过素材本身。','把宣传视频里的演出镜头当成真实玩法画面。','降低结论强度，或补充可验证的玩法资料。'],
-        ['比较双方怎么表达','Codex','比较第一眼在卖什么、谁是视觉中心、人物和世界怎样组织、关键事件或玩法怎样出现。','先看出传播方法的差异，再解释构图、色光和材质。','只填了一张美术元素表，却没说差异会怎样影响用户理解。','回到同一个传播问题，重看第一眼信息。'],
-        ['拿掉竞品外壳','Codex','留下构图、镜头、人物关系、叙事和信息顺序，拿掉竞品专属角色、剧情和品牌符号。','换成本项目内容后，这个方法仍然成立。','方向必须依赖竞品专属内容才能成立。','删除方向，或继续下探到更底层的做法。'],
-        ['换成本项目的内容','Codex','把可借的方法放回本项目的角色、场景、玩法、卖点和现有素材。','能判断是复用现有素材、重新包装，还是需要新做素材。','迁移结果与项目定位或角色身份冲突。','换本项目素材重做；仍不成立就放弃。'],
-        ['扩成可制作的新方向','Codex','从已经迁移成功的方法继续发展具体画面，不只停在分析结论。','得到当前包装里没有、但确实能制作的新方向。','只是换了角色、背景、颜色或皮肤。','重做画面主张、人物关系和看得见的事件。'],
-        ['检查每条结论','Codex','逐条回答差异是什么、竞品解决了什么、为什么成立、拿掉外壳后还能剩什么。','空话被删掉，不确定的地方仍写成未知。','没有数据却声称一定能提高点击、收入或转化。','只保留画面能支持的判断，不推断商业效果。'],
-        ['把证据和结论放在一起','Codex','把代表图片放到对应案例和结论旁；需要时再做本项目的概念试验图。','竞品原图和新生成的试验图身份清楚；每张试验图都有自己的完整提示词。','把竞品图冒充新产出，或结论找不到对应素材。','改正图片身份和对应关系，再登记正式版本。']
+        ['先定比较问题','joint','确认要比较的是哪类图片、哪个市场、什么渠道，以及本项目现在卡在哪里。','双方材料回答同一个问题，可以放在一起比较。','把不同用户阶段、渠道或使用场景混在一起。','缩小到同一种任务，再开始收集案例。'],
+        ['看清自己的现状','codex','读取项目视觉基准、现有包装、真实素材、玩法和卖点。','能说明本项目现在怎么做，哪些地方还没有证据。','自己还没有可比做法，却直接说落后或存在空缺。','把没证据的部分写成未知，用真实素材和卖点作参照。'],
+        ['找齐竞品原始素材','codex','优先从官方或可靠来源找主视觉、Banner、活动图和商店图。','每个案例都有真实图片、来源、时间、市场和大致用途。','只有搜索摘要、二手转载或看不到原图。','继续找原始页面；用途查不到时，只分析画面本身。'],
+        ['确认素材能证明什么','codex','把“从画面直接看见的”与“需要其他资料才能确认的用途或玩法”分开。','每个判断都有对应证据，不会越过素材本身。','把宣传视频里的演出镜头当成真实玩法画面。','降低结论强度，或补充可验证的玩法资料。'],
+        ['比较双方怎么表达','codex','比较第一眼在卖什么、谁是视觉中心、人物和世界怎样组织、关键事件或玩法怎样出现。','先看出传播方法的差异，再解释构图、色光和材质。','只填了一张美术元素表，却没说差异会怎样影响用户理解。','回到同一个传播问题，重看第一眼信息。'],
+        ['拿掉竞品外壳','codex','留下构图、镜头、人物关系、叙事和信息顺序，拿掉竞品专属角色、剧情和品牌符号。','换成本项目内容后，这个方法仍然成立。','方向必须依赖竞品专属内容才能成立。','删除方向，或继续下探到更底层的做法。'],
+        ['换成本项目的内容','codex','把可借的方法放回本项目的角色、场景、玩法、卖点和现有素材。','能判断是复用现有素材、重新包装，还是需要新做素材。','迁移结果与项目定位或角色身份冲突。','换本项目素材重做；仍不成立就放弃。'],
+        ['扩成可制作的新方向','codex','从已经迁移成功的方法继续发展具体画面，不只停在分析结论。','得到当前包装里没有、但确实能制作的新方向。','只是换了角色、背景、颜色或皮肤。','重做画面主张、人物关系和看得见的事件。'],
+        ['检查每条结论','codex','逐条回答差异是什么、竞品解决了什么、为什么成立、拿掉外壳后还能剩什么。','空话被删掉，不确定的地方仍写成未知。','没有数据却声称一定能提高点击、收入或转化。','只保留画面能支持的判断，不推断商业效果。'],
+        ['把证据和结论放在一起','codex','把代表图片放到对应案例和结论旁；需要时再做本项目的概念试验图。','竞品原图和新生成的试验图身份清楚；每张试验图都有自己的完整提示词。','把竞品图冒充新产出，或结论找不到对应素材。','改正图片身份和对应关系，再登记正式版本。']
       ],
       artifacts:['竞品素材和来源记录','差异、可借方法和项目化方向','完整竞品分析','可浏览的分析页面','需要时生成的本项目试验图'],
       blocks:['没有真实素材','目标市场或用途无法确认且会改变判断','自身侧事实不足','迁移依赖竞品专属内容'],
@@ -436,7 +465,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary: wxian-visual-competitive-analysis\n辅助研究: wxian-conducting-internet-research\n视频资料: wxian-video-source-analysis\n诊断词典: sicza-visual-director DIAGNOSE'
     },
     {
-      id:'research',num:'05',title:'调研研究',display:'查资料，做有根据的判断',aliases:'互联网调研 搜索 研究 市场格局 视觉研究 穷举 最新 当前 事实核验',status:'verified',
+      id:'research',num:'05',title:'调研研究',display:'查来源、核事实，为当前决定补证据',aliases:'互联网调研 搜索 研究 市场格局 视觉研究 穷举 最新 当前 事实核验',
       intro:'先说清这次研究要帮你做什么决定，再按地区、时间和来源去找。搜索结果只是线索，核对过才能写进结论。',
       suitable:'主题、实体、对比、事件、联动、视觉资料、市场格局或严格枚举研究；也可为其他模块补证。',
       inputs:'要支持的决策、范围、地区、时间、排除项、深度和交付形式。',
@@ -449,15 +478,15 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'aux',name:'为其他任务补资料',copy:'研究结果直接回到当前任务，不另开一项任务，也不代替视觉或产品流程做最终决定。'}
       ],
       nodes:[
-        ['先说这次要决定什么','一起确认','写清研究要支持的决定、范围、地区、时间、排除项、要查多深和最后需要什么文件。','研究问题能直接影响下一步选择。','缺少某项信息会让查找方向完全不同。','只补问这个关键缺口，其余按明确边界开始。'],
-        ['确定查多深','Codex','根据问题选择快速查清、完整研究或尽量找全。','知道要覆盖哪些内容，也知道什么情况下可以停。','用几次搜索回答“全部”，或为一个简单问题做无边界穷举。','重新选择深度，并说明这次结论能覆盖到哪里。'],
-        ['把问题拆成查找路线','Codex','列出主题、别名、不同语言、来源类型、时间范围和可能的失败点。','每条路线都知道要找哪种证据，不是反复换关键词。','几个查询只是同一句话的改写。','换语言、来源、运营主体、归档或素材入口。'],
-        ['检查能不能完成','Codex','只有任务确实需要历史归档、图片查看、长期保存或并行查找时，才检查这些能力。','缺少某项能力时，会提前说明替代做法、限制或是否必须停下。','工具不能用，就把原本该查的内容直接删掉。','保留目标，缩小交付范围，并明确写出缺口。'],
-        ['寻找原始线索','Codex','按不同语言、来源、时间和地区搜索，优先找到原始页面、图片、时间线和主体关系。','得到一组可以继续核对的候选来源。','一直改写相似关键词，却没有出现新来源。','换一类来源或查找入口，不重复同一种尝试。'],
-        ['逐条核对事实','Codex','让每条影响决策的说法对应到合适来源；涉及“当前”和“最新”时重新检查日期。','线索、已确认事实、推断和未知分开写。','把搜索摘要、转载或一页官网当成所有说法的证明。','为这条说法找直接证据，找不到就降低结论强度。'],
-        ['补关键缺口和反例','Codex','补查地区、别名、日期、不同来源、反例、冲突和已经过期的资料。','重要结论不只靠一条路径，互相冲突的证据不会被藏掉。','因为没搜到，就写成这件事不存在。','只有范围封闭且有权威清单时，才能判断“不存在”。'],
-        ['从事实走到建议','Codex','先写事实，再写观察和可能的规律，最后说明它会怎样影响当前决定。','每条建议都能回到证据，也写清样本偏差和适用范围。','把一次观察写成普遍规律，或把相关性写成因果。','把结论降回证据真正能支持的强度。'],
-        ['检查并交付','Codex','检查来源、日期、范围、引用、未知和完成程度；代表图片放在对应结论旁。','你会看到哪些已经查清、哪些只能部分回答、哪些因关键资料不足而停下。','把限制藏在正文末尾，或把证据图片当成新生成的图片。','把限制和图片身份写清，再生成正式报告和浏览页面。']
+        ['先说这次要决定什么','joint','写清研究要支持的决定、范围、地区、时间、排除项、要查多深和最后需要什么文件。','研究问题能直接影响下一步选择。','缺少某项信息会让查找方向完全不同。','只补问这个关键缺口，其余按明确边界开始。'],
+        ['确定查多深','codex','根据问题选择快速查清、完整研究或尽量找全。','知道要覆盖哪些内容，也知道什么情况下可以停。','用几次搜索回答“全部”，或为一个简单问题做无边界穷举。','重新选择深度，并说明这次结论能覆盖到哪里。'],
+        ['把问题拆成查找路线','codex','列出主题、别名、不同语言、来源类型、时间范围和可能的失败点。','每条路线都知道要找哪种证据，不是反复换关键词。','几个查询只是同一句话的改写。','换语言、来源、运营主体、归档或素材入口。'],
+        ['检查能不能完成','codex','只有任务确实需要历史归档、图片查看、长期保存或并行查找时，才检查这些能力。','缺少某项能力时，会提前说明替代做法、限制或是否必须停下。','工具不能用，就把原本该查的内容直接删掉。','保留目标，缩小交付范围，并明确写出缺口。'],
+        ['寻找原始线索','codex','按不同语言、来源、时间和地区搜索，优先找到原始页面、图片、时间线和主体关系。','得到一组可以继续核对的候选来源。','一直改写相似关键词，却没有出现新来源。','换一类来源或查找入口，不重复同一种尝试。'],
+        ['逐条核对事实','codex','让每条影响决策的说法对应到合适来源；涉及“当前”和“最新”时重新检查日期。','线索、已确认事实、推断和未知分开写。','把搜索摘要、转载或一页官网当成所有说法的证明。','为这条说法找直接证据，找不到就降低结论强度。'],
+        ['补关键缺口和反例','codex','补查地区、别名、日期、不同来源、反例、冲突和已经过期的资料。','重要结论不只靠一条路径，互相冲突的证据不会被藏掉。','因为没搜到，就写成这件事不存在。','只有范围封闭且有权威清单时，才能判断“不存在”。'],
+        ['从事实走到建议','codex','先写事实，再写观察和可能的规律，最后说明它会怎样影响当前决定。','每条建议都能回到证据，也写清样本偏差和适用范围。','把一次观察写成普遍规律，或把相关性写成因果。','把结论降回证据真正能支持的强度。'],
+        ['检查并交付','codex','检查来源、日期、范围、引用、未知和完成程度；代表图片放在对应结论旁。','你会看到哪些已经查清、哪些只能部分回答、哪些因关键资料不足而停下。','把限制藏在正文末尾，或把证据图片当成新生成的图片。','把限制和图片身份写清，再生成正式报告和浏览页面。']
       ],
       artifacts:['查找路线','来源与证据记录','事实、观察和建议','完整研究报告','可浏览的研究页面'],
       blocks:['“尽量找全”的统计范围说不清','关键的当前事实无法核对','不同来源冲突并会改变决定','任务要求完整，但现有资料或能力不足'],
@@ -465,7 +494,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary / Auxiliary: wxian-conducting-internet-research\nPrimary 输出: work/final/research.md + internet-research.html\n辅助输出: 调用方 request 的 work/research/\n交付状态: COMPLETE_WITHIN_PROTOCOL / PARTIAL_WITH_LIMITATIONS / BLOCKED'
     },
     {
-      id:'concept',num:'06',title:'游戏概念与入口测试',display:'试出真正不同的游戏方向',aliases:'入口测试 游戏概念 画风玩法 角色怪物场景 原型 玩法变异 product blueprint',status:'verified',
+      id:'concept',num:'06',title:'入口测试',display:'生成并比较不同的游戏概念与玩法方向',aliases:'入口测试 游戏概念 画风玩法 角色怪物场景 原型 玩法变异 product blueprint',
       intro:'从少量设定里找出真正不同的游戏方向，再分别看角色、场景和玩法画面。完整入口测试通常会做 3–5 个方向，每个方向用 3 张主图来判断。',
       suitable:'从零找游戏方向、画风玩法入口测试、把成熟玩法变异到新世界、深化角色 / 怪物 / 场景 / 玩法原型。',
       inputs:'最初设定、必须保留的内容、玩法或视觉参考和已有素材。涉及真实行业或成熟玩法时，还要先查资料。',
@@ -478,17 +507,17 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'iterate',name:'继续出图或返修',copy:'已经确认的事实不乱动，只打开本次要改的部分。失败时从最早出错的位置重做。'}
       ],
       nodes:[
-        ['先锁定不能变的内容','一起确认','收集当前要求、必须保留项、项目事实、视觉基准、已有素材和参考图。','产品类型、玩家做什么、想获得什么体验、基本循环和范围都有明确状态。','把一句世界观设定直接当成已经确认的产品规则。','先标成待确认；进入完整方案或可玩切片前再确认。'],
-        ['需要时先查资料','Codex','真实地点、行业、职业、技术或成熟玩法会影响设计时，先查清功能、关系、限制和失败方式。','研究结果直接变成创意可以使用的材料。','外部事实没核对，或研究写成独立报告后没有回到设计。','留在当前任务补证，并分清事实、常见做法、灵感和未知。'],
-        ['先想出更多种子','Codex','从玩家动作、人物关系、世界规则和回报方式出发，内部产生 6–12 个种子。','种子之间的玩法和世界因果不同，不只是名字不同。','只换题材外壳或美术风格。','重新改变玩家在做什么、关系怎样运作、世界如何回应。'],
-        ['筛成 3–5 个方向','Codex','比较产品差异、世界是否必要、还能长出多少内容，留下可直接出图测试的候选。','每个方向都说得清游戏是什么、玩家是谁、主要动作、世界规则和回报。','名字不同，但玩家动作、循环和世界规则可以互换。','把两个方向换皮测试；还能成立就合并或重做。'],
-        ['把角色、场景和玩法写具体','Codex','写清角色外形与功能道具、场景用途与地标、玩家动作与画面反馈。','出图时不需要模型替你决定核心设计。','只有概念名和形容词，看不出人物在哪里、做什么、结果是什么。','补到主体、地点、动作和可见结果都能直接画出来。'],
-        ['为每个方向做 3 张主图','Codex','完整测试默认给每个方向做角色图、核心场景和玩法主画面。','3–5 个方向形成 9–15 张判断用主图；不合适的图类可以换成更能证明方向的素材。','用重复镜头凑数量，或只凭一张角色图选产品方向。','按每张图要证明什么，重新安排出图。'],
-        ['选定一个方向','一起确认','由你选择，或在你明确授权后由 Codex 代选，再把关键事实锁定。','未选方向仍是候选；选定后，后续出图不会随提示词漂移。','还没选就把候选当成项目长期事实。','继续保留候选状态，等确认后再写入正式规则。'],
-        ['补成完整产品蓝图','Codex','整理玩法因果、内容关系和覆盖范围；做大型方案时，再检查重复、缺口和每张图的证明任务。','知道产品怎样运作、各类内容如何连接、还缺哪些证据。','把同一内容换几个镜头，就当成新增了很多系统。','回到内容关系，分清真正的新内容和只换表现。'],
-        ['逐张锁定参考和变化范围','Codex','为每张图说明参考图各管什么、本次能改什么、画幅、主体数量、位置、交互点、前后景和不能新增的内容。','当前图片的要求不会反过来改写已经确认的产品事实。','只写“综合所有参考”，或让一次失败出图改变角色身份。','恢复素材优先级，锁定主参考和本次修改范围。'],
-        ['写成可直接出图的提示词','Codex','把产品事实和玩法关系写成看得见的主体、地点、动作、后果和世界专属物。每张图单独成稿。','每份提示词都能独立使用，不依赖上一条。','只有关键词骨架、待填空模板或“同上”。','回到上游缺口补事实，再重写当前这张图。'],
-        ['生成、检查并交付','Codex','真实生成并逐张查看。数量较大的提示词包还要做一次独立的全量语义检查和方向换皮测试。','原图、逐图提示词和查看页面互相对应。','调用失败却用占位图代替，或只抽查少数提示词。','从最早出错的一层修；全部待交付图片通过后再正式登记。']
+        ['先锁定不能变的内容','joint','收集当前要求、必须保留项、项目事实、视觉基准、已有素材和参考图。','产品类型、玩家做什么、想获得什么体验、基本循环和范围都有明确状态。','把一句世界观设定直接当成已经确认的产品规则。','先标成待确认；进入完整方案或可玩切片前再确认。'],
+        ['需要时先查资料','codex','真实地点、行业、职业、技术或成熟玩法会影响设计时，先查清功能、关系、限制和失败方式。','研究结果直接变成创意可以使用的材料。','外部事实没核对，或研究写成独立报告后没有回到设计。','留在当前任务补证，并分清事实、常见做法、灵感和未知。'],
+        ['先想出更多种子','codex','从玩家动作、人物关系、世界规则和回报方式出发，内部产生 6–12 个种子。','种子之间的玩法和世界因果不同，不只是名字不同。','只换题材外壳或美术风格。','重新改变玩家在做什么、关系怎样运作、世界如何回应。'],
+        ['筛成 3–5 个方向','codex','比较产品差异、世界是否必要、还能长出多少内容，留下可直接出图测试的候选。','每个方向都说得清游戏是什么、玩家是谁、主要动作、世界规则和回报。','名字不同，但玩家动作、循环和世界规则可以互换。','把两个方向换皮测试；还能成立就合并或重做。'],
+        ['把角色、场景和玩法写具体','codex','写清角色外形与功能道具、场景用途与地标、玩家动作与画面反馈。','出图时不需要模型替你决定核心设计。','只有概念名和形容词，看不出人物在哪里、做什么、结果是什么。','补到主体、地点、动作和可见结果都能直接画出来。'],
+        ['为每个方向做 3 张主图','codex','完整测试默认给每个方向做角色图、核心场景和玩法主画面。','3–5 个方向形成 9–15 张判断用主图；不合适的图类可以换成更能证明方向的素材。','用重复镜头凑数量，或只凭一张角色图选产品方向。','按每张图要证明什么，重新安排出图。'],
+        ['选定一个方向','joint','由你选择，或在你明确授权后由 Codex 代选，再把关键事实锁定。','未选方向仍是候选；选定后，后续出图不会随提示词漂移。','还没选就把候选当成项目长期事实。','继续保留候选状态，等确认后再写入正式规则。'],
+        ['补成完整产品蓝图','codex','整理玩法因果、内容关系和覆盖范围；做大型方案时，再检查重复、缺口和每张图的证明任务。','知道产品怎样运作、各类内容如何连接、还缺哪些证据。','把同一内容换几个镜头，就当成新增了很多系统。','回到内容关系，分清真正的新内容和只换表现。'],
+        ['逐张锁定参考和变化范围','codex','为每张图说明参考图各管什么、本次能改什么、画幅、主体数量、位置、交互点、前后景和不能新增的内容。','当前图片的要求不会反过来改写已经确认的产品事实。','只写“综合所有参考”，或让一次失败出图改变角色身份。','恢复素材优先级，锁定主参考和本次修改范围。'],
+        ['写成可直接出图的提示词','codex','把产品事实和玩法关系写成看得见的主体、地点、动作、后果和世界专属物。每张图单独成稿。','每份提示词都能独立使用，不依赖上一条。','只有关键词骨架、待填空模板或“同上”。','回到上游缺口补事实，再重写当前这张图。'],
+        ['生成、检查并交付','codex','真实生成并逐张查看。数量较大的提示词包还要做一次独立的全量语义检查和方向换皮测试。','原图、逐图提示词和查看页面互相对应。','调用失败却用占位图代替，或只抽查少数提示词。','从最早出错的一层修；全部待交付图片通过后再正式登记。']
       ],
       artifacts:['3–5 个候选方向','每个方向的具体说明','9–15 张判断用主图','产品蓝图和内容关系','选定方向的正式规则','逐图提示词与查看页面'],
       blocks:['关键产品假设未确认','几个方向只是换皮','玩法没有看得见的状态变化','大型方案覆盖不足或独立检查未通过'],
@@ -496,7 +525,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary: sicza-game-concept-lab\n默认完整入口测试: 3–5 方向 × 3 张主证据图 = 9–15 张\n状态: PROVISIONAL / FROZEN / BOUND / COMPILED / OBSERVED\nStandalone completion: workspace-governance promote'
     },
     {
-      id:'motion',num:'07',title:'主视觉微动画',display:'让一张主视觉动起来',aliases:'微动画 kv seedance 让kv动起来 5秒 动画 视频 prompt',status:'verified',
+      id:'motion',num:'07',title:'微动画',display:'把静态主视觉写成完整的五秒故事或视频',aliases:'微动画 kv seedance 让kv动起来 5秒 动画 视频 prompt',
       intro:'先判断这张静态图是故事的开头、中间还是结尾，再补出前后发生的事。动画要讲完一件事，不能只让头发、粒子和镜头轻微晃动。',
       suitable:'把静态主视觉、海报、Banner 或商店图做成 5 秒剧情微动画；可以只要 Seedance 提示词，也可以继续生成真实视频。',
       inputs:'一张可读取的静态 KV；可选目标画幅、使用场景、剧情倾向和镜头自由度。',
@@ -509,16 +538,16 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'pass',name:'静态图是中间或结尾',copy:'视频要先自然走到这张图，再继续或结束，不能第一帧就照搬它。'}
       ],
       nodes:[
-        ['先读懂这张静态图','Codex','只记录图里确实看得到的人物、道具、位置、动作和前后因线索；把推断和未知分开。','知道哪些是画面事实，哪些只是合理猜测。','没有可读取的图片，或把猜测写成事实。','先要到真实图片；不拿通用模板猜故事。'],
-        ['确定它是开头、中间还是结尾','Codex','判断这张图应该出现在视频开始、经过点还是结束，并决定它在生成时扮演什么角色。','静态图的使用方式与故事时间位置一致。','明明是高潮或结尾，却被当作第一帧直接开始。','重新判断位置，不输出两种做法混在一起的版本。'],
-        ['提出 3 个不同故事','Codex','每个故事都写清开始状态、怎样走到这张图、高潮和最后状态。','每个候选都有一项持续发生的主要变化。','只是头发、粒子、光效和镜头轻微晃动，没有事件。','重写事件因果；两轮仍找不到可用线索就停下。'],
-        ['检查故事能否自然经过这张图','Codex','逐个检查前后动作是否真的能形成当前画面。','静态图是故事必然经过的一刻，不是被硬塞进时间轴。','候选故事无法自然走到当前画面。','淘汰该候选；最多再换一次因果假设。'],
-        ['锁定画面怎样变化','Codex','先定人物和场景的状态变化，再写表演、空间、镜头、光线和材质。','写提示词时不再临时发明故事或人物关系。','故事变化和画面安排互相冲突。','回到这一层改正，再重新写提示词。'],
-        ['检查人物、姿势和道具是否连续','Codex','确认人物身份不变，动作有过渡，道具的出现、移动和归属有来路。','身份稳定，同时保留自然的表情和身体表演。','道具凭空出现、消失、穿模或换到别人手里。','补出合理的进入过程；做不到就删掉这个动作。'],
-        ['选择镜头活动范围','一起确认','根据空间关系和故事，选择镜头基本不动、适度移动或较自由移动。继续生成真实视频时，由 Codex 直接选稳妥方案。','镜头帮助讲清事件，不会破坏人物和空间关系。','镜头动得太大，人物关系和画面位置读不清。','把活动范围降一级；仍不稳就基本锁镜头。'],
-        ['排好 5 秒节奏','Codex','0–1 秒起势，1–3 秒升级，3–5 秒到达高潮并落稳。整段只讲一个主变化。','人物、环境、光效和镜头在同一个高潮一起兑现。','几个无关事件同时发生，或结尾太早泄力。','删掉支线，重新确定主变化和最后落点。'],
-        ['排除常见错误','Codex','检查角色身份、静态图位置、素材用途、动作连续性、无依据战斗和“动态壁纸”式微动。','失败版本会在内部重写，不直接交给你。','非战斗题材凭空出现敌人、攻击或爆炸。','回到故事候选，只用当前画面能支持的变化。'],
-        ['写成可直接使用的提示词','Codex','把已经确认的故事、节奏、镜头和结尾写成完整自然语言，并再检查一次逻辑。','提示词可以直接用于 Seedance 2.0。','提示词变成一堆与当前画面无关的防错补丁。','只保留这条故事真正需要的限制。']
+        ['先读懂这张静态图','codex','只记录图里确实看得到的人物、道具、位置、动作和前后因线索；把推断和未知分开。','知道哪些是画面事实，哪些只是合理猜测。','没有可读取的图片，或把猜测写成事实。','先要到真实图片；不拿通用模板猜故事。'],
+        ['确定它是开头、中间还是结尾','codex','判断这张图应该出现在视频开始、经过点还是结束，并决定它在生成时扮演什么角色。','静态图的使用方式与故事时间位置一致。','明明是高潮或结尾，却被当作第一帧直接开始。','重新判断位置，不输出两种做法混在一起的版本。'],
+        ['提出 3 个不同故事','codex','每个故事都写清开始状态、怎样走到这张图、高潮和最后状态。','每个候选都有一项持续发生的主要变化。','只是头发、粒子、光效和镜头轻微晃动，没有事件。','重写事件因果；两轮仍找不到可用线索就停下。'],
+        ['检查故事能否自然经过这张图','codex','逐个检查前后动作是否真的能形成当前画面。','静态图是故事必然经过的一刻，不是被硬塞进时间轴。','候选故事无法自然走到当前画面。','淘汰该候选；最多再换一次因果假设。'],
+        ['锁定画面怎样变化','codex','先定人物和场景的状态变化，再写表演、空间、镜头、光线和材质。','写提示词时不再临时发明故事或人物关系。','故事变化和画面安排互相冲突。','回到这一层改正，再重新写提示词。'],
+        ['检查人物、姿势和道具是否连续','codex','确认人物身份不变，动作有过渡，道具的出现、移动和归属有来路。','身份稳定，同时保留自然的表情和身体表演。','道具凭空出现、消失、穿模或换到别人手里。','补出合理的进入过程；做不到就删掉这个动作。'],
+        ['选择镜头活动范围','joint','根据空间关系和故事，选择镜头基本不动、适度移动或较自由移动。继续生成真实视频时，由 Codex 直接选稳妥方案。','镜头帮助讲清事件，不会破坏人物和空间关系。','镜头动得太大，人物关系和画面位置读不清。','把活动范围降一级；仍不稳就基本锁镜头。'],
+        ['排好 5 秒节奏','codex','0–1 秒起势，1–3 秒升级，3–5 秒到达高潮并落稳。整段只讲一个主变化。','人物、环境、光效和镜头在同一个高潮一起兑现。','几个无关事件同时发生，或结尾太早泄力。','删掉支线，重新确定主变化和最后落点。'],
+        ['排除常见错误','codex','检查角色身份、静态图位置、素材用途、动作连续性、无依据战斗和“动态壁纸”式微动。','失败版本会在内部重写，不直接交给你。','非战斗题材凭空出现敌人、攻击或爆炸。','回到故事候选，只用当前画面能支持的变化。'],
+        ['写成可直接使用的提示词','codex','把已经确认的故事、节奏、镜头和结尾写成完整自然语言，并再检查一次逻辑。','提示词可以直接用于 Seedance 2.0。','提示词变成一堆与当前画面无关的防错补丁。','只保留这条故事真正需要的限制。']
       ],
       artifacts:['静态图阅读记录','它在故事中的时间位置','故事和画面变化说明','画面说明与提示词对应记录','完整 Seedance 提示词'],
       blocks:['没有可读取的静态图','无法建立连续故事','关键素材来源不明','只要提示词时，镜头活动范围仍未确认'],
@@ -526,7 +555,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'Primary: wxian-kv-micro-animation（Prompt-only）\n真实视频 Primary: wxian-image-production / video\n目标: 5 秒单段连续叙事\n默认节奏: 0–1 / 1–3 / 3–5 秒'
     },
     {
-      id:'decompose',num:'08',title:'拆图',display:'把合成图拆成可编辑图层',aliases:'拆图 分层 kv banner poster 游戏ui ui截图 clean plate psd 图层',status:'verified',
+      id:'decompose',num:'08',title:'拆图',display:'拆 KV、合成图和游戏 UI 截图',aliases:'拆图 拆 UI 拆游戏 UI UI 拆层 分层 kv banner poster 游戏ui ui截图 clean plate psd 图层',
       intro:'主视觉拆层和游戏界面拆层是两件不同的事。前者按远近和遮挡拆；后者先还原没有界面的游戏画面，再拆按钮、面板和场景里的提示。',
       suitable:'把合成主视觉、Banner、海报恢复为可编辑图层；或把真实游戏截图拆成无界面场景和可重新组合的界面素材。',
       inputs:'真实源图、拆开后要怎么用、哪些对象要单独控制、文字和 Logo 是否必须完全保真。拆多张游戏界面时，还要提供完整截图组。',
@@ -538,16 +567,16 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'ui',name:'游戏界面截图',copy:'先还原完整的无界面场景，再拆固定在屏幕上的按钮和跟随场景的提示；多张截图会复用相同组件。'}
       ],
       nodes:[
-        ['先锁定原图','一起确认','确认使用的是哪一版原图，并记录尺寸、格式、用途、哪些对象要单独控制，以及文字要保真到什么程度。','这张原图是所有可见像素、构图、位置和比例的唯一依据。','原图被换过、找不到或打不开。','重新锁定原图；旧的拆层方案和后续文件全部作废。'],
-        ['判断该拆哪些层','Codex','主视觉按远近、遮挡和独立移动价值拆；游戏界面先分场景、屏幕按钮和跟随世界的提示。','每一层为什么要独立、以后怎么用，都说得清。','只按颜色机械切块，或把界面拆得碎到无法编辑。','按独立显示、移动、替换和跨图复用的需要重新划分。'],
-        ['划清遮挡和像素归属','Codex','记录谁挡住谁，并确定每个可见像素属于哪一层；同时圈出真正需要补画的隐藏区域。','不会出现两个图层争同一块像素，也不会留下空洞。','图层重叠、缺口明显，或把大面积原图交给模型重画。','缩小遮罩和补画范围；看得见的部分继续直接取自原图。'],
-        ['写出拆层方案','Codex','记录每层范围、位置、前后顺序、补画方法、文字处理和跨截图复用方式。','每个正式文件都能追到原图和对应图层。','方案与原图、遮挡关系或尺寸变换对不上。','先重做方案，不进入生成。'],
-        ['只补原图看不到的地方','Codex','纯提取的部分不调用模型；只有拆开后会露出的隐藏区域才写补画要求。','模型只负责原图里看不见、但后续确实会露出的有限区域。','本来不需要补画，却调用模型改了可见内容。','改回直接提取，或进一步缩小补画区域。'],
-        ['逐层生成隐藏内容','Codex','先检查方案和输入，再只为需要补画的图层调用生成服务。','每次生成都绑定当前图层、原图和补画要求。','某一层生成失败，或透明边缘和结构不合格。','只重做这一层和依赖它的下游文件。'],
-        ['处理透明边缘并回拼','Codex','制作透明层、无界面场景底图、裁切图，并按原顺序重新合成。','所有全画布图层按顺序叠加后，能还原原图。','颜色漂移、透明边缘脏、图层有洞或重叠。','只修遮罩、原图提取或出问题的单层，不重跑全部生成。'],
-        ['多张界面复用同一组件','Codex','把多张截图里的共用组件、变体和单屏专用元素分开。','相同按钮或面板只制作一次，每张截图只记录自己的位置和状态。','后面的截图使用了还没检查完的组件，或同一个控件重复制作。','先完成共用组件检查，再让其他截图引用。'],
-        ['检查画面和文件','Codex','检查透明度、边缘、几何、透视、姿势、遮挡连续性、隐藏补画、文字处理和回合成结果。','画面好不好与文件是否正确分别通过检查。','隐藏区静止时没问题，一动就断；或凭空猜了没见过的界面状态。','只重做当前层；没见过的状态继续标成未知。'],
-        ['导出可编辑 PSD','Codex','用正式导出工具生成带智能对象的 PSD，再重新打开检查画布、内嵌图层、位置和文件版本。','PNG、图层说明、回合成、对比图、检查结果和 PSD 全部一致。','手工伪造导出记录，或 PSD 内容与图层清单不一致。','重新执行导出和回读检查，再登记正式版本。']
+        ['先锁定原图','joint','确认使用的是哪一版原图，并记录尺寸、格式、用途、哪些对象要单独控制，以及文字要保真到什么程度。','这张原图是所有可见像素、构图、位置和比例的唯一依据。','原图被换过、找不到或打不开。','重新锁定原图；旧的拆层方案和后续文件全部作废。'],
+        ['判断该拆哪些层','codex','主视觉按远近、遮挡和独立移动价值拆；游戏界面先分场景、屏幕按钮和跟随世界的提示。','每一层为什么要独立、以后怎么用，都说得清。','只按颜色机械切块，或把界面拆得碎到无法编辑。','按独立显示、移动、替换和跨图复用的需要重新划分。'],
+        ['划清遮挡和像素归属','codex','记录谁挡住谁，并确定每个可见像素属于哪一层；同时圈出真正需要补画的隐藏区域。','不会出现两个图层争同一块像素，也不会留下空洞。','图层重叠、缺口明显，或把大面积原图交给模型重画。','缩小遮罩和补画范围；看得见的部分继续直接取自原图。'],
+        ['写出拆层方案','codex','记录每层范围、位置、前后顺序、补画方法、文字处理和跨截图复用方式。','每个正式文件都能追到原图和对应图层。','方案与原图、遮挡关系或尺寸变换对不上。','先重做方案，不进入生成。'],
+        ['只补原图看不到的地方','codex','纯提取的部分不调用模型；只有拆开后会露出的隐藏区域才写补画要求。','模型只负责原图里看不见、但后续确实会露出的有限区域。','本来不需要补画，却调用模型改了可见内容。','改回直接提取，或进一步缩小补画区域。'],
+        ['逐层生成隐藏内容','codex','先检查方案和输入，再只为需要补画的图层调用生成服务。','每次生成都绑定当前图层、原图和补画要求。','某一层生成失败，或透明边缘和结构不合格。','只重做这一层和依赖它的下游文件。'],
+        ['处理透明边缘并回拼','codex','制作透明层、无界面场景底图、裁切图，并按原顺序重新合成。','所有全画布图层按顺序叠加后，能还原原图。','颜色漂移、透明边缘脏、图层有洞或重叠。','只修遮罩、原图提取或出问题的单层，不重跑全部生成。'],
+        ['多张界面复用同一组件','codex','把多张截图里的共用组件、变体和单屏专用元素分开。','相同按钮或面板只制作一次，每张截图只记录自己的位置和状态。','后面的截图使用了还没检查完的组件，或同一个控件重复制作。','先完成共用组件检查，再让其他截图引用。'],
+        ['检查画面和文件','codex','检查透明度、边缘、几何、透视、姿势、遮挡连续性、隐藏补画、文字处理和回合成结果。','画面好不好与文件是否正确分别通过检查。','隐藏区静止时没问题，一动就断；或凭空猜了没见过的界面状态。','只重做当前层；没见过的状态继续标成未知。'],
+        ['导出可编辑 PSD','codex','用正式导出工具生成带智能对象的 PSD，再重新打开检查画布、内嵌图层、位置和文件版本。','PNG、图层说明、回合成、对比图、检查结果和 PSD 全部一致。','手工伪造导出记录，或 PSD 内容与图层清单不一致。','重新执行导出和回读检查，再登记正式版本。']
       ],
       artifacts:['图层或界面结构图','遮挡和像素归属记录','全画布透明 PNG 与裁切图','无界面场景底图和界面组件','回合成与差异对比','可编辑 PSD、预览和导出记录'],
       blocks:['原图或尺寸已经变化','图层或控件结构不完整','像素有空洞或重复归属','回合成、画面检查或 PSD 回读失败'],
@@ -555,7 +584,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'KV Primary: wxian-image-layer-decomposition\nUI Primary: wxian-game-ui-layer-decomposition\nPSD: wxian-layered-psd-export\n可见区域: Source Lock\n隐藏区域: 有限 reconstruction + 专业 QA'
     },
     {
-      id:'workspace',num:'09',title:'项目型 / 题材型 / 风格型 Workspace',display:'按项目或风格来用',aliases:'项目workspace 题材workspace 风格workspace 3d卡通 日式厚涂 写实 奇幻 科幻 初始化 bootstrap',status:'verified',
+      id:'workspace',num:'09',title:'风格型 Workspace',display:'按题材或风格长期积累参考、基准和产出',aliases:'项目workspace 题材workspace 风格workspace 3d卡通 日式厚涂 写实 奇幻 科幻 初始化 bootstrap',
       intro:'Workspace 可以围绕一个具体项目，也可以围绕一种题材或风格。长期放入参考、成品和反馈，Codex 就能沿着同一个方向继续做。',
       suitable:'长期服务一个具体项目；或围绕 3D 卡通、日式厚涂、写实、奇幻、科幻等方向持续积累和产出。',
       inputs:'项目型需要项目资料和正式资产。题材型、风格型先准备来源清楚的代表参考；已有成品、反例和允许变化范围越清楚，基准越准。',
@@ -567,16 +596,16 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'style',name:'风格型｜当前可用',copy:'围绕 3D 卡通、日式厚涂、写实等风格积累造型、材质、笔触、光色和镜头规则。具体角色与项目事实仍由当前任务提供。'}
       ],
       nodes:[
-        ['选择长期工作对象','一起确认','先决定这个 Workspace 长期围绕具体项目、某类题材，还是某种视觉风格。','后续资料和任务都服务同一个长期方向。','一个 Workspace 同时塞入互不相关的项目、题材和风格。','保留一个主方向；其他方向另建 Workspace。'],
-        ['放入代表资料','用户','项目型放角色、Logo、玩法截图和历史成品。题材型、风格型放不同内容下仍能代表该方向的参考、好样例和反例。','Codex 能分清哪些内容需要长期保留，哪些只属于一次任务。','风格参考全部来自同一个 IP，无法判断是风格还是具体内容。','增加不同角色、场景和题材的样例，再继续整理。'],
-        ['做一次快速初始化','Codex','检查基本运行环境并建立材料索引。只有明确排障时，才做完整系统检查。','页面会告诉你还缺工作说明、还缺视觉基准、已经可用，还是被问题挡住。','把初始化误解成检查所有密钥和全部依赖。','只处理当前返回的问题，不扩大检查范围。'],
-        ['写清这个 Workspace 管什么','Codex','项目型写项目身份、玩法、角色和品牌。题材型写世界元素、人物关系和常见场景。风格型写造型、材质、笔触、光色和镜头。','长期要复用的内容与单次任务内容已经分开。','把某个参考 IP 的角色、剧情或品牌写成通用规则。','删掉具体 IP 内容，只保留当前 Workspace 真正要积累的部分。'],
-        ['建立视觉基准','Codex','从代表资料中找稳定做法、最低质量线、可变化部分和不适用的情况。','以后开始新任务时，不再从零猜这个项目、题材或风格应该长什么样。','基准只剩“高级、厚涂、写实、卡通”等空标签。','改成看得见的形体、比例、材质、笔触、光色、镜头和信息顺序。'],
-        ['用不同内容做测试','Codex','题材型、风格型要换角色、场景和用途测试，确认规则不是只对一张参考图有效。','知道哪些特点稳定，哪些只属于某个样例。','换一个题材或角色后，整套规则就失效。','缩小适用范围，或补充更多参考后重建基准。'],
-        ['开始持续生产','一起确认','每个新目标单独建任务；没做完就继续；新增资料和返修回到原任务。','同一个 Workspace 可以连续产出 Banner、社群图、玩法图、包装、拆图和其他成品。','把查资料、生成图片和检查结果拆成互不相干的任务。','让这些步骤留在原任务里，保持前后决定一致。'],
-        ['补当前任务的具体内容','用户','题材型、风格型每次都要说明这次画谁、做什么、给谁看，并提供当前角色、Logo 或产品事实。','长期基准负责方向，当前素材负责这次成品的身份和内容。','长期风格规则覆盖了当前角色、Logo 或项目事实。','当前任务的明确要求优先；风格只决定表现方法。'],
-        ['检查成品是否真的符合','Codex','同时检查当前内容有没有做对，以及画面是否符合这个 Workspace 的长期方向。','内容正确，风格或题材特征也能从画面里看出来。','画面有风格，但角色和事实错了；或内容正确，却完全偏离长期方向。','先修最早出错的部分，再重新检查。'],
-        ['用新样例和反馈更新','Codex','新增代表资料或收到明确反馈后，只更新受影响的说明和视觉基准。','后续任务会使用最新结论，也保留以前的任务和版本。','新样例已经改变方向，旧基准仍被继续使用。','重新检查材料，更新受影响部分后再生产。']
+        ['选择长期工作对象','joint','先决定这个 Workspace 长期围绕具体项目、某类题材，还是某种视觉风格。','后续资料和任务都服务同一个长期方向。','一个 Workspace 同时塞入互不相关的项目、题材和风格。','保留一个主方向；其他方向另建 Workspace。'],
+        ['放入代表资料','user','项目型放角色、Logo、玩法截图和历史成品。题材型、风格型放不同内容下仍能代表该方向的参考、好样例和反例。','Codex 能分清哪些内容需要长期保留，哪些只属于一次任务。','风格参考全部来自同一个 IP，无法判断是风格还是具体内容。','增加不同角色、场景和题材的样例，再继续整理。'],
+        ['做一次快速初始化','codex','检查基本运行环境并建立材料索引。只有明确排障时，才做完整系统检查。','页面会告诉你还缺工作说明、还缺视觉基准、已经可用，还是被问题挡住。','把初始化误解成检查所有密钥和全部依赖。','只处理当前返回的问题，不扩大检查范围。'],
+        ['写清这个 Workspace 管什么','codex','项目型写项目身份、玩法、角色和品牌。题材型写世界元素、人物关系和常见场景。风格型写造型、材质、笔触、光色和镜头。','长期要复用的内容与单次任务内容已经分开。','把某个参考 IP 的角色、剧情或品牌写成通用规则。','删掉具体 IP 内容，只保留当前 Workspace 真正要积累的部分。'],
+        ['建立视觉基准','codex','从代表资料中找稳定做法、最低质量线、可变化部分和不适用的情况。','以后开始新任务时，不再从零猜这个项目、题材或风格应该长什么样。','基准只剩“高级、厚涂、写实、卡通”等空标签。','改成看得见的形体、比例、材质、笔触、光色、镜头和信息顺序。'],
+        ['用不同内容做测试','codex','题材型、风格型要换角色、场景和用途测试，确认规则不是只对一张参考图有效。','知道哪些特点稳定，哪些只属于某个样例。','换一个题材或角色后，整套规则就失效。','缩小适用范围，或补充更多参考后重建基准。'],
+        ['开始持续生产','joint','每个新目标单独建任务；没做完就继续；新增资料和返修回到原任务。','同一个 Workspace 可以连续产出 Banner、社群图、玩法图、包装、拆图和其他成品。','把查资料、生成图片和检查结果拆成互不相干的任务。','让这些步骤留在原任务里，保持前后决定一致。'],
+        ['补当前任务的具体内容','user','题材型、风格型每次都要说明这次画谁、做什么、给谁看，并提供当前角色、Logo 或产品事实。','长期基准负责方向，当前素材负责这次成品的身份和内容。','长期风格规则覆盖了当前角色、Logo 或项目事实。','当前任务的明确要求优先；风格只决定表现方法。'],
+        ['检查成品是否真的符合','codex','同时检查当前内容有没有做对，以及画面是否符合这个 Workspace 的长期方向。','内容正确，风格或题材特征也能从画面里看出来。','画面有风格，但角色和事实错了；或内容正确，却完全偏离长期方向。','先修最早出错的部分，再重新检查。'],
+        ['用新样例和反馈更新','codex','新增代表资料或收到明确反馈后，只更新受影响的说明和视觉基准。','后续任务会使用最新结论，也保留以前的任务和版本。','新样例已经改变方向，旧基准仍被继续使用。','重新检查材料，更新受影响部分后再生产。']
       ],
       artifacts:['材料索引、长期工作说明和视觉基准','代表参考、好样例、反例和测试结果','所有任务、版本和正式交付'],
       blocks:['一个 Workspace 混入多个无关方向','参考不足，分不清风格与具体 IP 内容','长期说明或视觉基准已经过期','长期规则与当前任务事实冲突'],
@@ -584,7 +613,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'SOURCE_CONFIRMED: AGENTS.md 规定一个 Workspace 对应一个项目\nUSER_RULE: 这里的长期工作对象可以是具体项目、题材或风格\nRUNTIME_COMPATIBILITY: 三种用法复用现有初始化、Baseline、request 与交付链，不需要 workspace_mode 开关\nBOUNDARY: 当前任务的角色、Logo 与项目事实始终高于长期题材或风格规则'
     },
     {
-      id:'personal',num:'10',title:'个人 Skill、偏好与反馈',display:'让 Workspace 记住你的做法',aliases:'个人skill 用户偏好 决策 反馈 评分 记忆 personal skill user',status:'verified',
+      id:'personal',num:'10',title:'个人 Skill 沉淀',display:'让反馈、偏好和个人方法影响后续任务',aliases:'个人skill 用户偏好 决策 反馈 评分 记忆 personal skill user',
       intro:'你对正式成品的明确反馈可以留给下一次使用。只有换到别的项目仍然成立的方法，才会记成个人规则；角色、Logo 和单次修改仍留在原项目里。',
       suitable:'记录长期稳定偏好、复用高分方法、把明确反馈变成以后会自动加载的个人工作规则。',
       inputs:'已经正式交付的版本、你给出的评分和反馈、换项目仍然成立的做法，以及一次使用范围选择。',
@@ -597,16 +626,16 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         {id:'load',name:'开始任务时使用',copy:'你开启个人偏好后，Codex 只读取当前任务真正用得上的个人方法。'}
       ],
       nodes:[
-        ['先登记正式交付','Codex','文件完成正式登记后，按任务和版本建立一条待评分记录。','反馈永远对应一个真实版本，不会漂到后来的成品。','你已经收到文件，但它还没有完成正式登记。','先记为待交付；同一版本正式登记后自动对上。'],
-        ['你给出评分','用户','对实际交付给 1–5 分，也可以暂时不评分。','分数只来自你，Codex 不会代填默认值。','给了 1–3 分，却没有说明原因或希望怎样改。','Codex 只追问缺少的原因或改法。'],
-        ['分别保存低分和高分经验','Codex','低分记录问题与改法；4–5 分进入高分案例。','以后能查清哪个版本为什么好，或为什么需要返修。','旧版本的反馈被误绑到新成品。','继续绑定原版本，不自动搬到新版本。'],
-        ['判断是不是长期偏好','一起确认','检查这条反馈是否明确、长期稳定、换到其他项目仍然有用，并确定适用范围。','留下的是会影响以后选择的方法，不是一次性备注。','把某个项目的角色、Logo、禁用内容或单次修改写成个人偏好。','这些内容留在原项目或当前任务。'],
-        ['整理成个人方法草稿','Codex','当反馈已经形成完整做法时，写成一份包含适用范围、具体动作和判断标准的草稿。','它是一套可执行方法，不只是“更高级”“更有冲击力”这类形容词。','把一句局部偏好扩大成所有任务都要遵守的规则。','缩小适用范围，保持你的原意。'],
-        ['你确认使用范围','用户','选择所有任务都用，或只在指定任务类型中使用。这个选择只需要确认一次。','使用范围被正式记录，同时开启个人偏好。','让你从一份已经过期、包含不存在任务的旧清单里选择。','重新读取当前任务清单，再让你确认。'],
-        ['正式保存个人方法','Codex','把草稿移入正式个人方法目录，并记录文件位置、当前版本和使用方式。','这套方法可以随个人资料复制到另一个项目 Workspace。','文件改过，但记录仍指向旧版本。','重新登记；在修好前不会静默使用旧内容。'],
-        ['开始任务时只读命中内容','Codex','新建、继续、补素材或返修时，先看当前任务是否命中某条个人方法。','未开启时完全不读取；开启但没命中时，也不会塞入无关偏好。','一次读入全部个人方法，或读取失败后悄悄忽略。','只读取目录和命中的正文；命中内容打不开就先停。'],
-        ['在制作前应用个人方法','Codex','进入专业制作前，确认当前流程确实可以使用这条方法，而且文件版本没有变化。','个人方法会在真正做决定前生效。','方法用错任务、来源不明或文件已经过期。','重新匹配和读取，不绕过检查。'],
-        ['发生冲突时按顺序决定','一起确认','先听你这次明确说的，再看项目事实和视觉基准，然后才用长期个人偏好和默认做法。','你这次的明确要求永远排第一。','历史偏好覆盖这次要求，或个人审美改写项目身份。','回到这个顺序；本次例外可以记录，但不会擅自改成长期规则。']
+        ['先登记正式交付','codex','文件完成正式登记后，按任务和版本建立一条待评分记录。','反馈永远对应一个真实版本，不会漂到后来的成品。','你已经收到文件，但它还没有完成正式登记。','先记为待交付；同一版本正式登记后自动对上。'],
+        ['你给出评分','user','对实际交付给 1–5 分，也可以暂时不评分。','分数只来自你，Codex 不会代填默认值。','给了 1–3 分，却没有说明原因或希望怎样改。','Codex 只追问缺少的原因或改法。'],
+        ['分别保存低分和高分经验','codex','低分记录问题与改法；4–5 分进入高分案例。','以后能查清哪个版本为什么好，或为什么需要返修。','旧版本的反馈被误绑到新成品。','继续绑定原版本，不自动搬到新版本。'],
+        ['判断是不是长期偏好','joint','检查这条反馈是否明确、长期稳定、换到其他项目仍然有用，并确定适用范围。','留下的是会影响以后选择的方法，不是一次性备注。','把某个项目的角色、Logo、禁用内容或单次修改写成个人偏好。','这些内容留在原项目或当前任务。'],
+        ['整理成个人方法草稿','codex','当反馈已经形成完整做法时，写成一份包含适用范围、具体动作和判断标准的草稿。','它是一套可执行方法，不只是“更高级”“更有冲击力”这类形容词。','把一句局部偏好扩大成所有任务都要遵守的规则。','缩小适用范围，保持你的原意。'],
+        ['你确认使用范围','user','选择所有任务都用，或只在指定任务类型中使用。这个选择只需要确认一次。','使用范围被正式记录，同时开启个人偏好。','让你从一份已经过期、包含不存在任务的旧清单里选择。','重新读取当前任务清单，再让你确认。'],
+        ['正式保存个人方法','codex','把草稿移入正式个人方法目录，并记录文件位置、当前版本和使用方式。','这套方法可以随个人资料复制到另一个项目 Workspace。','文件改过，但记录仍指向旧版本。','重新登记；在修好前不会静默使用旧内容。'],
+        ['开始任务时只读命中内容','codex','新建、继续、补素材或返修时，先看当前任务是否命中某条个人方法。','未开启时完全不读取；开启但没命中时，也不会塞入无关偏好。','一次读入全部个人方法，或读取失败后悄悄忽略。','只读取目录和命中的正文；命中内容打不开就先停。'],
+        ['在制作前应用个人方法','codex','进入专业制作前，确认当前流程确实可以使用这条方法，而且文件版本没有变化。','个人方法会在真正做决定前生效。','方法用错任务、来源不明或文件已经过期。','重新匹配和读取，不绕过检查。'],
+        ['发生冲突时按顺序决定','joint','先听你这次明确说的，再看项目事实和视觉基准，然后才用长期个人偏好和默认做法。','你这次的明确要求永远排第一。','历史偏好覆盖这次要求，或个人审美改写项目身份。','回到这个顺序；本次例外可以记录，但不会擅自改成长期规则。']
       ],
       artifacts:['需求与交付历史','评分与高分案例','长期偏好记录','个人方法草稿','个人偏好设置和正式个人方法'],
       blocks:['反馈没有绑定真实版本','低分原因需要你补充','个人方法的使用范围未确认','命中的个人方法无法读取或已经过期'],
@@ -634,9 +663,18 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
   const sidebar=document.getElementById('sidebar');
   const menuBtn=document.getElementById('menuBtn');
   const toast=document.getElementById('toast');
+  const globalSearch=document.getElementById('globalSearch');
   let activeModule=modules[0].id;
   let activeBranch=modules[0].branches[0].id;
   let activeNode=0;
+  let searchHits=[];
+  let searchIndex=-1;
+  const ownerMeta={
+    codex:{short:'Codex',detail:'Codex 处理'},
+    user:{short:'你来准备',detail:'你来准备'},
+    joint:{short:'一起确认',detail:'一起确认'}
+  };
+  const protectedPhrases=['项目视觉基准','视觉包装方案','入口测试','个人 Skill','主视觉','同一项','提示词','改图','拆成','不同','任务'];
 
   function esc(value=''){return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
   function plain(value=''){
@@ -652,10 +690,34 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
     return terms.reduce((text,[pattern,replacement])=>text.replace(pattern,replacement),String(value));
   }
   function notify(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(notify.t);notify.t=setTimeout(()=>toast.classList.remove('show'),1700)}
-  function closeMenu(){sidebar.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}
+  function protectPhrases(root=document.body){
+    const pattern=new RegExp(`(${protectedPhrases.map(p=>p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')})`,'g');
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(walker.nextNode())nodes.push(walker.currentNode);
+    nodes.forEach(node=>{
+      const parent=node.parentElement;
+      if(!parent||parent.closest('.keep,script,style,code,pre,input,textarea,select')||!protectedPhrases.some(p=>node.data.includes(p)))return;
+      const parts=node.data.split(pattern);
+      if(parts.length<2)return;
+      const fragment=document.createDocumentFragment();
+      parts.forEach(part=>{if(!part)return;const value=protectedPhrases.includes(part)?Object.assign(document.createElement('span'),{className:'keep',textContent:part}):document.createTextNode(part);fragment.append(value)});
+      node.replaceWith(fragment);
+    });
+  }
+  function normalizeSearch(value=''){return String(value).normalize('NFKC').toLowerCase().replace(/[\s/\\_-]+/g,'')}
+  function syncSidebar(){
+    const mobile=matchMedia('(max-width:780px)').matches;
+    const open=sidebar.classList.contains('open');
+    sidebar.toggleAttribute('inert',mobile&&!open);
+    sidebar.setAttribute('aria-hidden',String(mobile&&!open));
+  }
+  function closeMenu(restore=false){sidebar.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');syncSidebar();if(restore&&matchMedia('(max-width:780px)').matches)menuBtn.focus()}
+  function setMenu(open){sidebar.classList.toggle('open',open);menuBtn.setAttribute('aria-expanded',String(open));syncSidebar();if(open)setTimeout(()=>sidebar.querySelector('button')?.focus(),0)}
+  function closeSearch(){const root=document.getElementById('searchResults');root.classList.remove('open');globalSearch.setAttribute('aria-expanded','false');globalSearch.removeAttribute('aria-activedescendant');searchIndex=-1}
   function setView(id,push=true){
     document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===`view-${id}`||(id==='module'&&v.id==='view-module')));
-    document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id||(id==='module'&&b.dataset.module===activeModule)));
+    document.querySelectorAll('[data-view]').forEach(b=>{const current=b.dataset.view===id||(id==='module'&&b.dataset.module===activeModule);b.classList.toggle('active',current);b.toggleAttribute('aria-current',current)});
     if(push) history.replaceState(null,'',id==='home'?'#home':id==='module'?`#${activeModule}`:`#${id}`);
     closeMenu();window.scrollTo({top:0,behavior:'smooth'});
   }
@@ -665,78 +727,112 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
     if(push) history.replaceState(null,'',`#${id}`);closeMenu();window.scrollTo({top:0,behavior:'smooth'});
   }
   function renderHome(){
-    moduleNav.innerHTML=modules.map(m=>`<li><button class="nav-button" data-view="module" data-module="${m.id}"><span class="nav-num">${m.num}</span><span class="nav-title">${esc(m.display)}</span></button></li>`).join('');
-    moduleIndex.innerHTML=modules.map(m=>`<button class="module-row" data-open-module="${m.id}"><span class="num">${m.num}</span><h3>${esc(m.display)}</h3><p>${esc(plain(m.intro))}</p><span class="output">${esc(plain(m.output))}</span><span class="arrow">→</span></button>`).join('');
+    moduleNav.innerHTML=modules.map(m=>`<li><button class="nav-button" data-view="module" data-module="${m.id}"><span class="nav-num">${m.num}</span><span class="nav-title">${esc(m.title)}</span></button></li>`).join('');
+    moduleIndex.innerHTML=modules.map(m=>`<button class="module-row" data-open-module="${m.id}" aria-label="打开${esc(m.title)}"><span class="num">${m.num}</span><h3>${esc(m.title)}</h3><span class="row-copy"><b>典型任务</b><p>${esc(plain(m.display))}</p></span><span class="row-copy output"><b>最终产物</b>${esc(plain(m.output))}</span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
     document.querySelectorAll('[data-open-module]').forEach(b=>b.addEventListener('click',()=>openModule(b.dataset.openModule)));
-    document.querySelectorAll('[data-module]').forEach(b=>b.addEventListener('click',()=>openModule(b.dataset.module)));
+    document.querySelectorAll('[data-module]').forEach(b=>b.addEventListener('click',()=>{openModule(b.dataset.module);closeMenu(true)}));
+    protectPhrases(moduleNav);protectPhrases(moduleIndex);
+  }
+  function renderNodeDetail(m,index){
+    const n=m.nodes[index],owner=ownerMeta[n[1]]||ownerMeta.codex;
+    const detail=document.getElementById('nodeDetail');
+    detail.innerHTML=`<div class="detail-owner">${owner.detail} · 第 ${index+1} 步</div><h3>${esc(plain(n[0]))}</h3>
+      <div class="detail-grid"><div class="detail-item"><b>这一步做什么</b><p>${esc(plain(n[2]))}</p></div><div class="detail-item"><b>做完是什么样</b><p>${esc(plain(n[3]))}</p></div><div class="detail-item fail"><b>什么时候会停</b><p>${esc(plain(n[4]))}</p></div><div class="detail-item recover"><b>怎么继续</b><p>${esc(plain(n[5]))}</p></div></div>
+      <div class="progress-line" aria-hidden="true"><i style="width:${(index+1)/m.nodes.length*100}%"></i></div>`;
+    protectPhrases(detail);
+  }
+  function renderNodeList(m){
+    const stageNames=['准备','定方向','制作','检查与交付'];
+    let currentStage=-1;
+    return m.nodes.map((x,i)=>{
+      const stage=Math.min(3,Math.floor(i*4/m.nodes.length));
+      const heading=stage!==currentStage?`<div class="workflow-stage">${stageNames[stage]}</div>`:'';
+      currentStage=stage;
+      const owner=ownerMeta[x[1]]||ownerMeta.codex;
+      return `${heading}<button class="node-button ${i===activeNode?'active':''}" data-node="${i}" aria-pressed="${i===activeNode}"><span class="node-index">${String(i+1).padStart(2,'0')}</span><span class="node-name">${esc(plain(x[0]))}</span><span class="node-owner">${owner.short}</span></button>`;
+    }).join('');
   }
   function renderModule(){
-    const m=modules.find(x=>x.id===activeModule);const n=m.nodes[activeNode];const plan=m.status==='mixed';const owner=n[1]==='共同'?'一起确认':n[1]==='用户'?'你来准备':'Codex 处理';
+    const m=modules.find(x=>x.id===activeModule);
+    const decisions=m.nodes.filter(x=>x[1]!=='codex').map(x=>plain(x[0])).join('、')||'没有额外确认点';
     moduleView.innerHTML=`
       <div class="module-head">
-        <div class="module-id">第 ${m.num} 类 · ${esc(m.title)}</div>
-        <div class="module-title-row"><h1>${esc(m.display)}</h1><span class="status ${plan?'plan':''}"><i></i>${plan?'含“规划中”内容':'当前可用'}</span></div>
-        <p class="module-lead">${esc(plain(m.intro))}</p>
+        <div class="module-id">${m.num} / 10</div>
+        <div class="module-title-row"><h1>${esc(m.title)}</h1></div>
+        <p class="module-lead">${esc(plain(m.display))}。${esc(plain(m.intro))}</p>
         <ol class="module-flow" aria-label="这一类工作的简要流程">${m.flow.map(x=>`<li>${esc(plain(x))}</li>`).join('')}</ol>
       </div>
-      <div class="fact-strip">
-        <div class="fact-cell"><span>适合什么</span><p>${esc(plain(m.suitable))}</p></div>
-        <div class="fact-cell"><span>你要准备</span><p>${esc(plain(m.inputs))}</p></div>
-        <div class="fact-cell"><span>你会拿到</span><p>${esc(plain(m.output))}</p></div>
-      </div>
-      <div class="branch-block"><div class="branch-tabs">${m.branches.map((b,i)=>`<button class="branch-tab ${b.id===activeBranch?'active':''}" data-branch="${b.id}">${esc(plain(b.name))}</button>`).join('')}</div><p class="branch-copy" id="branchCopy">${esc(plain(m.branches.find(b=>b.id===activeBranch).copy))}</p></div>
-      <div class="workflow-head"><h2>Codex 会按这些步骤做</h2><p>点一步，看它做什么、什么时候会停、怎么继续。</p></div>
+      <section class="guide" aria-labelledby="guide-title">
+        <div class="guide-head"><h2 id="guide-title">开始前先看这七件事</h2><p>先看结论，需要时再展开完整步骤。</p></div>
+        <div class="guide-grid">
+          <div class="guide-item"><b>这类任务做什么</b><p>${esc(plain(m.suitable))}</p></div>
+          <div class="guide-item"><b>你要准备什么</b><p>${esc(plain(m.inputs))}</p></div>
+          <div class="guide-item"><b>Codex 会做什么</b><p>${m.flow.map(x=>esc(plain(x))).join(' → ')}</p></div>
+          <div class="guide-item"><b>哪些地方由你决定</b><p>${esc(decisions)}</p></div>
+          <div class="guide-item"><b>什么情况会暂停</b><p>${m.blocks.map(x=>esc(plain(x))).join('；')}</p></div>
+          <div class="guide-item"><b>怎样继续</b><p>补齐缺失信息或改正出错的材料后，从最早受影响的一步继续。</p></div>
+          <div class="guide-item"><b>最后会拿到什么</b><p>${esc(plain(m.output))}</p></div>
+        </div>
+      </section>
+      <div class="branch-block"><div class="guide-head"><h2>选择具体做法</h2><p>同一模块可以有不同分支。</p></div><div class="branch-tabs">${m.branches.map(b=>`<button class="branch-tab ${b.id===activeBranch?'active':''}" data-branch="${b.id}" aria-pressed="${b.id===activeBranch}">${esc(plain(b.name))}</button>`).join('')}</div><p class="branch-copy" id="branchCopy">${esc(plain(m.branches.find(b=>b.id===activeBranch).copy))}</p></div>
+      <div class="workflow-head"><h2>完整流程</h2><p>选择一步，查看动作、结果、停点和恢复方法。</p></div>
       <div class="workflow">
-        <div class="node-list">${m.nodes.map((x,i)=>`<button class="node-button ${i===activeNode?'active':''}" data-node="${i}"><span class="node-index">${String(i+1).padStart(2,'0')}</span><span class="node-name">${esc(plain(x[0]))}</span><span class="node-owner">${x[1]==='共同'?'一起确认':x[1]==='用户'?'你来准备':'Codex'}</span></button>`).join('')}</div>
-        <article class="node-detail" id="nodeDetail">
-          <div class="detail-owner">${owner} · 第 ${activeNode+1} 步</div><h3>${esc(plain(n[0]))}</h3>
-          <div class="detail-grid"><div class="detail-item"><b>这一步做什么</b><p>${esc(plain(n[2]))}</p></div><div class="detail-item"><b>做完是什么样</b><p>${esc(plain(n[3]))}</p></div><div class="detail-item fail"><b>什么时候会停</b><p>${esc(plain(n[4]))}</p></div><div class="detail-item recover"><b>怎么继续</b><p>${esc(plain(n[5]))}</p></div></div>
-          <div class="progress-line"><i style="width:${(activeNode+1)/m.nodes.length*100}%"></i></div>
-        </article>
+        <div class="node-list">${renderNodeList(m)}</div>
+        <article class="node-detail" id="nodeDetail" aria-live="polite"></article>
       </div>
       <div class="chapter-foot"><div class="foot-col"><h3>过程中会留下</h3><ul>${m.artifacts.map(x=>`<li>${esc(plain(x))}</li>`).join('')}</ul></div><div class="foot-col"><h3>这些情况会先停下</h3><ul>${m.blocks.map(x=>`<li>${esc(plain(x))}</li>`).join('')}</ul></div><div class="foot-col"><h3>接下来还能做</h3><ul>${m.next.map(x=>`<li>${esc(plain(x))}</li>`).join('')}</ul></div></div>
-      <details class="evidence"><summary>需要时再看：内部名称和文件</summary><div class="evidence-body"><div class="code-block">${esc(m.evidence)}</div><div class="code-block">这些标记只用于查证\nVERIFIED = 当前版本直接支持\nINFERRED = 根据现有流程整理\nUSER_ASSERTED = 用户提出，当前版本未正式支持\nPROPOSED = 页面或未来功能方案</div></div></details>`;
-    moduleView.querySelectorAll('[data-branch]').forEach(b=>b.addEventListener('click',()=>{activeBranch=b.dataset.branch;moduleView.querySelectorAll('[data-branch]').forEach(x=>x.classList.toggle('active',x===b));document.getElementById('branchCopy').textContent=plain(m.branches.find(x=>x.id===activeBranch).copy)}));
-    moduleView.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>{activeNode=Number(b.dataset.node);renderModule();if(innerWidth<781)document.getElementById('nodeDetail').scrollIntoView({behavior:'smooth',block:'start'})}));
+      <details class="evidence"><summary>查看内部名称和文件</summary><div class="evidence-body single"><div class="code-block">${esc(m.evidence)}</div></div></details>`;
+    renderNodeDetail(m,activeNode);
+    protectPhrases(moduleView);
+    moduleView.querySelectorAll('[data-branch]').forEach(b=>b.addEventListener('click',()=>{activeBranch=b.dataset.branch;moduleView.querySelectorAll('[data-branch]').forEach(x=>{const selected=x===b;x.classList.toggle('active',selected);x.setAttribute('aria-pressed',String(selected))});document.getElementById('branchCopy').textContent=plain(m.branches.find(x=>x.id===activeBranch).copy)}));
+    moduleView.querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>{activeNode=Number(b.dataset.node);moduleView.querySelectorAll('[data-node]').forEach(x=>{const selected=x===b;x.classList.toggle('active',selected);x.setAttribute('aria-pressed',String(selected))});renderNodeDetail(m,activeNode);if(innerWidth<781)document.getElementById('nodeDetail').scrollIntoView({behavior:'smooth',block:'start'})}));
   }
   function renderLifecycle(){
-    const sw=document.getElementById('lifeSwitch');sw.innerHTML=lifecycle.map((x,i)=>`<button class="life-button ${i===0?'active':''}" data-life="${x.id}">${x.name}</button>`).join('');
-    function select(id){const x=lifecycle.find(v=>v.id===id);document.getElementById('lifeTitle').textContent=x.title;document.getElementById('lifeCopy').textContent=x.copy;document.getElementById('lifePath').innerHTML=x.path.map((p,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${esc(p)}</b></div>`).join('');sw.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.life===id))}
+    const sw=document.getElementById('lifeSwitch');sw.innerHTML=lifecycle.map((x,i)=>`<button class="life-button ${i===0?'active':''}" data-life="${x.id}" aria-pressed="${i===0}">${x.name}</button>`).join('');
+    function select(id){const x=lifecycle.find(v=>v.id===id);document.getElementById('lifeTitle').textContent=x.title;document.getElementById('lifeCopy').textContent=x.copy;document.getElementById('lifePath').innerHTML=x.path.map((p,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${esc(p)}</b></div>`).join('');sw.querySelectorAll('button').forEach(b=>{const selected=b.dataset.life===id;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});protectPhrases(document.getElementById('view-manual'))}
     sw.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>select(b.dataset.life)));select('new');
   }
   function renderBuilder(){
-    const select=document.getElementById('draftModule');select.innerHTML=modules.map(m=>`<option>${m.display}</option>`).join('');
+    const select=document.getElementById('draftModule');select.innerHTML=modules.map(m=>`<option>${m.title}</option>`).join('');
     const ids=['draftModule','draftGoal','draftInput','draftLimit','draftOutput'];ids.forEach(id=>document.getElementById(id).addEventListener('input',compileDraft));compileDraft();
-    document.getElementById('copyDraft').addEventListener('click',async()=>{await navigator.clipboard.writeText(document.getElementById('compiledPrompt').textContent);notify('需求已复制')});
+    document.getElementById('copyDraft').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.getElementById('compiledPrompt').textContent);notify('需求已复制')}catch{notify('复制失败，请手动复制')}});
   }
   function compileDraft(){
     const mod=document.getElementById('draftModule').value,goal=document.getElementById('draftGoal').value.trim(),input=document.getElementById('draftInput').value.trim(),limit=document.getElementById('draftLimit').value.trim(),out=document.getElementById('draftOutput').value;
-    const ok=goal&&input;document.getElementById('draftError').textContent=ok?'':goal?'还要写现有素材。':'先写你要的结果和现有素材。';document.getElementById('copyDraft').disabled=!ok;
-    document.getElementById('compiledPrompt').textContent=ok?`任务：${mod}\n\n我要的结果：${goal}\n\n现有素材：${input}\n\n必须保留 / 禁止修改：${limit||'无额外限制，以当前项目事实和 Baseline 为准'}\n\n请做到：${out}\n\n开始前请先检查当前项目资料与正式 Baseline；如果关键输入会改变方向但仍缺失，请只补问阻塞项。`:'先填写“我要的结果”和“现有素材”。';
+    const ok=Boolean(goal&&input);document.getElementById('draftError').textContent=ok?'':goal?'请补充现有素材。':input?'请补充要得到的结果。':'请填写要得到的结果和现有素材。';document.getElementById('copyDraft').disabled=!ok;
+    document.getElementById('draftGoal').setAttribute('aria-invalid',String(!goal));document.getElementById('draftInput').setAttribute('aria-invalid',String(!input));
+    document.getElementById('compiledPrompt').textContent=ok?`任务：${mod}\n\n我要的结果：${goal}\n\n现有素材：${input}\n\n必须保留 / 禁止修改：${limit||'无额外限制，以当前项目事实和项目视觉基准为准'}\n\n请做到：${out}\n\n开始前先检查当前项目资料和项目视觉基准。缺少会改变方向的关键信息时，只追问缺失项。`:'填写“我要的结果”和“现有素材”后，这里会生成可复制的需求。';
   }
-  function renderChecklist(){const root=document.getElementById('checklist');root.innerHTML=checks.map((x,i)=>`<label class="checkitem"><input type="checkbox" data-check="${i}"><span>${esc(x)}</span></label>`).join('');root.addEventListener('change',updateChecks);document.getElementById('checkAll').addEventListener('click',()=>{root.querySelectorAll('input').forEach(x=>x.checked=true);updateChecks()});updateChecks()}
+  function renderChecklist(){const root=document.getElementById('checklist');root.innerHTML=checks.map((x,i)=>`<label class="checkitem"><input type="checkbox" data-check="${i}"><span>${esc(x)}</span></label>`).join('');root.addEventListener('change',updateChecks);updateChecks()}
   function updateChecks(){const total=checks.length,done=document.querySelectorAll('#checklist input:checked').length;document.getElementById('checkText').textContent=`${done} / ${total} 已检查`}
   function renderRoutes(){document.getElementById('routeRows').innerHTML=routes.map(r=>`<tr><td>${esc(r[0])}</td><td><code>${esc(r[1])}</code></td><td><code>${esc(r[2])}</code></td><td><code>${esc(r[3])}</code></td></tr>`).join('')}
+  function updateSearchActive(){
+    const options=[...document.querySelectorAll('[data-search-module]')];
+    options.forEach((option,index)=>{const active=index===searchIndex;option.classList.toggle('active',active);option.setAttribute('aria-selected',String(active))});
+    if(searchIndex>=0&&options[searchIndex]){globalSearch.setAttribute('aria-activedescendant',options[searchIndex].id);options[searchIndex].scrollIntoView({block:'nearest'})}else globalSearch.removeAttribute('aria-activedescendant');
+  }
   function renderSearch(q){
-    const root=document.getElementById('searchResults'),v=q.trim().toLowerCase();if(!v){root.classList.remove('open');root.innerHTML='';return}
-    const hits=modules.filter(m=>`${m.display} ${m.title} ${m.aliases} ${m.intro} ${m.branches.map(b=>b.name+' '+b.copy).join(' ')}`.toLowerCase().includes(v));root.classList.add('open');root.innerHTML=hits.length?hits.map(m=>`<button class="search-result" data-search-module="${m.id}"><span>${m.num}</span><span><b>${esc(m.display)}</b><small>${esc(m.title)} · ${esc(m.branches.map(b=>plain(b.name)).join(' · '))}</small></span></button>`).join(''):`<div class="empty-search">没有匹配。换成结果来搜，例如“做活动图”“拆游戏 UI”“把 KV 动起来”。</div>`;
-    root.querySelectorAll('[data-search-module]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('globalSearch').value='';root.classList.remove('open');openModule(b.dataset.searchModule)}));
+    const root=document.getElementById('searchResults'),v=normalizeSearch(q);if(!v){root.innerHTML='';searchHits=[];closeSearch();return}
+    searchHits=modules.filter(m=>normalizeSearch(`${m.title} ${m.display} ${m.aliases} ${m.intro} ${m.branches.map(b=>b.name+' '+b.copy).join(' ')}`).includes(v));searchIndex=-1;root.classList.add('open');globalSearch.setAttribute('aria-expanded','true');root.innerHTML=searchHits.length?searchHits.map(m=>`<button class="search-result" id="search-${m.id}" role="option" aria-selected="false" data-search-module="${m.id}"><span>${m.num}</span><span><b>${esc(m.title)}</b><small>${esc(m.display)}</small></span></button>`).join(''):`<div class="empty-search">没有找到。可以搜“活动图”“拆游戏 UI”或“让 KV 动起来”。</div>`;
+    root.querySelectorAll('[data-search-module]').forEach(b=>b.addEventListener('click',()=>{globalSearch.value='';closeSearch();openModule(b.dataset.searchModule)}));
   }
   function initTheme(){const saved=localStorage.getItem('onboarding-theme');const theme=saved||'dark';document.documentElement.dataset.theme=theme;document.getElementById('themeBtn').textContent=theme==='dark'?'浅色':'深色'}
   function toggleTheme(){const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;localStorage.setItem('onboarding-theme',next);document.getElementById('themeBtn').textContent=next==='dark'?'浅色':'深色'}
   function routeHash(){const id=location.hash.slice(1)||'home';if(modules.some(m=>m.id===id))openModule(id,false);else if(['manual','technical'].includes(id))setView(id,false);else setView('home',false)}
 
-  renderHome();renderModule();renderLifecycle();renderBuilder();renderChecklist();renderRoutes();initTheme();routeHash();
-  document.querySelectorAll('[data-view="home"]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();setView('home')}));
-  document.querySelectorAll('[data-view="manual"]').forEach(b=>b.addEventListener('click',()=>setView('manual')));
-  document.querySelectorAll('[data-view="technical"]').forEach(b=>b.addEventListener('click',()=>setView('technical')));
+  renderHome();renderModule();renderLifecycle();renderBuilder();renderChecklist();renderRoutes();initTheme();routeHash();syncSidebar();protectPhrases(document.body);
+  document.querySelectorAll('[data-view="home"]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();setView('home');closeMenu(true)}));
+  document.querySelectorAll('[data-view="manual"]').forEach(b=>b.addEventListener('click',()=>{setView('manual');closeMenu(true)}));
+  document.querySelectorAll('[data-view="technical"]').forEach(b=>b.addEventListener('click',()=>{setView('technical');closeMenu(true)}));
   document.getElementById('startBtn').addEventListener('click',()=>document.getElementById('modules').scrollIntoView({behavior:'smooth'}));
   document.getElementById('draftBtn').addEventListener('click',()=>{setView('manual');setTimeout(()=>document.getElementById('draft').scrollIntoView({behavior:'smooth'}),120)});
   document.getElementById('themeBtn').addEventListener('click',toggleTheme);
-  menuBtn.addEventListener('click',()=>{const open=sidebar.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open))});
-  const globalSearch=document.getElementById('globalSearch');globalSearch.addEventListener('input',e=>renderSearch(e.target.value));
-  document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();globalSearch.focus()}if(e.key==='Escape'){document.getElementById('searchResults').classList.remove('open');closeMenu()}});
-  document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))document.getElementById('searchResults').classList.remove('open')});
+  menuBtn.addEventListener('click',()=>setMenu(!sidebar.classList.contains('open')));
+  globalSearch.addEventListener('input',e=>renderSearch(e.target.value));
+  globalSearch.addEventListener('keydown',e=>{if(!searchHits.length)return;if(e.key==='ArrowDown'){e.preventDefault();searchIndex=(searchIndex+1)%searchHits.length;updateSearchActive()}if(e.key==='ArrowUp'){e.preventDefault();searchIndex=(searchIndex-1+searchHits.length)%searchHits.length;updateSearchActive()}if(e.key==='Enter'&&searchIndex>=0){e.preventDefault();openModule(searchHits[searchIndex].id);globalSearch.value='';closeSearch()}});
+  document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();globalSearch.focus()}if(e.key==='Escape'){closeSearch();closeMenu(true)}});
+  document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))closeSearch()});
+  addEventListener('resize',syncSidebar);
   addEventListener('hashchange',routeHash);
   </script>
 </body>
