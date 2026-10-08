@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="InfiniteBOT Codex Workspace v8.63 操作地图：十类视觉生产任务的输入、节点、参与点、失败恢复与正式交付。">
-  <title>InfiniteBOT Codex Workspace｜v8.63 操作地图</title>
+  <meta name="description" content="InfiniteBOT Codex Workspace v8.64 操作地图：十类视觉生产任务的输入、节点、参与点、失败恢复与正式交付。">
+  <title>InfiniteBOT Codex Workspace｜v8.64 操作地图</title>
   <style>
     :root{
       --bg:#090909;--surface:#10100f;--surface-2:#161614;--surface-3:#1d1c19;
@@ -215,7 +215,7 @@
         <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></div>
       </div>
       <div class="top-actions">
-        <span class="version">当前版本 v8.63</span>
+        <span class="version">当前版本 v8.64</span>
         <button class="tool-button" id="optimizerBtn">优化需求</button>
         <button class="tool-button" id="themeBtn" aria-label="切换深浅主题">浅色</button>
       </div>
@@ -346,7 +346,7 @@
           <h2>证据状态</h2>
           <p class="intro">这些标记只用于查证页面内容。</p>
           <div class="legend">
-            <div><b>VERIFIED</b><p>可从 v8.63 正式文件直接确认。</p></div>
+            <div><b>VERIFIED</b><p>可从 v8.64 正式文件直接确认。</p></div>
             <div><b>INFERRED</b><p>由多个现有步骤整理得出。</p></div>
           </div>
         </div>
@@ -362,22 +362,22 @@
           <h2>这页依据哪个版本</h2>
           <div class="evidence-body">
             <div class="code-block">Release
-releases/InfiniteBOT-Codex-Workspace-v8.63.zip
+releases/InfiniteBOT-Codex-Workspace-v8.64.zip
 
 SHA-256
-b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
+64655364788a15348fdf8081dfbd1f6d21725f70460a383cf27207670e5eb353</div>
             <div class="code-block">当前版本包含
-23 个生产能力
+24 个生产能力
 21 类任务入口
 12 条主流程
 可选的个人偏好层
 
 新人操作页
-与 v8.63 正式版本对齐</div>
+与 v8.64 正式版本对齐</div>
           </div>
         </div>
       </section>
-      <footer class="footer"><b>InfiniteBOT Codex Workspace · v8.63</b><span>页面内容与当前正式版本对齐</span></footer>
+      <footer class="footer"><b>InfiniteBOT Codex Workspace · v8.64</b><span>页面内容与当前正式版本对齐</span></footer>
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -653,14 +653,15 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
       evidence:'SOURCE_CONFIRMED: AGENTS.md 规定一个 Workspace 对应一个项目\nUSER_RULE: 这里的长期工作对象可以是具体项目、题材或风格\nRUNTIME_COMPATIBILITY: 三种用法复用现有初始化、Baseline、request 与交付链，不需要 workspace_mode 开关\nBOUNDARY: 当前任务的角色、Logo 与项目事实始终高于长期题材或风格规则'
     },
     {
-      id:'personal',num:'10',title:'个人 Skill 沉淀',display:'让反馈、偏好和个人方法影响后续任务',aliases:'个人skill 用户偏好 决策 反馈 评分 记忆 personal skill user',
+      id:'personal',num:'10',title:'个人 Skill 沉淀',display:'让反馈、偏好和个人方法影响后续任务',aliases:'个人skill 用户偏好 决策 反馈 评分 记忆 共享归集 collection shared personal skill user',
       intro:'你对正式成品的明确反馈可以留给下一次使用。只有换到别的项目仍然成立的方法，才会记成个人规则；角色、Logo 和单次修改仍留在原项目里。',
       suitable:'记录长期稳定偏好、复用高分方法、把明确反馈变成以后会自动加载的个人工作规则。',
       inputs:'已经正式交付的版本、你给出的评分和反馈、换项目仍然成立的做法，以及一次使用范围选择。',
-      output:'每个版本的评分记录、长期偏好、个人方法草稿、已确认的个人方法，以及本次任务实际用到的内容。',
+      output:'每个版本的评分记录、长期偏好、个人方法草稿、已确认的个人方法，以及本次任务实际用到的内容。你也可以选择把已确认的内容共享到团队表。',
       flow:['先完成正式交付','你评分并说明原因','判断是否能跨项目复用','你确认使用范围','以后按需自动使用'],
       branches:[
         {id:'feedback',name:'交付评分',copy:'每项任务的每个版本单独记录。1–3 分需要你说明哪里不好、希望怎么改；4–5 分会进入高分案例。'},
+        {id:'collection',name:'可选共享归集',copy:'想把已确认的提示词、经验、问题或建议共享到团队表时，先看候选；只有你确认后才发送。它不会改变任务、评分或个人方法。'},
         {id:'preference',name:'长期偏好',copy:'只记录用户明确、长期稳定、跨任务可复用的偏好；当前要求始终覆盖历史。'},
         {id:'skill',name:'个人方法',copy:'完整做法先形成草稿，再由你确认一次使用范围：所有任务，或指定的几类任务。'},
         {id:'load',name:'开始任务时使用',copy:'你开启个人偏好后，Codex 只读取当前任务真正用得上的个人方法。'}
@@ -669,6 +670,7 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         ['先登记正式交付','codex','文件完成正式登记后，按任务和版本建立一条待评分记录。','反馈永远对应一个真实版本，不会漂到后来的成品。','你已经收到文件，但它还没有完成正式登记。','先记为待交付；同一版本正式登记后自动对上。'],
         ['你给出评分','user','对实际交付给 1–5 分，也可以暂时不评分。','分数只来自你，Codex 不会代填默认值。','给了 1–3 分，却没有说明原因或希望怎样改。','Codex 只追问缺少的原因或改法。'],
         ['分别保存低分和高分经验','codex','低分记录问题与改法；4–5 分进入高分案例。','以后能查清哪个版本为什么好，或为什么需要返修。','旧版本的反馈被误绑到新成品。','继续绑定原版本，不自动搬到新版本。'],
+        ['可选：共享已确认的内容','joint','只从当前任务中已有的证据整理提示词、经验、问题或建议。先展示候选；你确认后才发送。','共享内容仍能追到原任务和版本，也不会反过来改写你的任务、评分或个人方法。','材料不属于当前任务、证据已经变化，或你还没确认。','先补齐或重新确认；不发送。'],
         ['判断是不是长期偏好','joint','检查这条反馈是否明确、长期稳定、换到其他项目仍然有用，并确定适用范围。','留下的是会影响以后选择的方法，不是一次性备注。','把某个项目的角色、Logo、禁用内容或单次修改写成个人偏好。','这些内容留在原项目或当前任务。'],
         ['整理成个人方法草稿','codex','当反馈已经形成完整做法时，写成一份包含适用范围、具体动作和判断标准的草稿。','它是一套可执行方法，不只是“更高级”“更有冲击力”这类形容词。','把一句局部偏好扩大成所有任务都要遵守的规则。','缩小适用范围，保持你的原意。'],
         ['你确认使用范围','user','选择所有任务都用，或只在指定任务类型中使用。这个选择只需要确认一次。','使用范围被正式记录，同时开启个人偏好。','让你从一份已经过期、包含不存在任务的旧清单里选择。','重新读取当前任务清单，再让你确认。'],
@@ -677,10 +679,10 @@ b9a897523e17698bef4d5c48d879caf69457d349cd7409c7981ba454a5211421</div>
         ['在制作前应用个人方法','codex','进入专业制作前，确认当前流程确实可以使用这条方法，而且文件版本没有变化。','个人方法会在真正做决定前生效。','方法用错任务、来源不明或文件已经过期。','重新匹配和读取，不绕过检查。'],
         ['发生冲突时按顺序决定','joint','先听你这次明确说的，再看项目事实和视觉基准，然后才用长期个人偏好和默认做法。','你这次的明确要求永远排第一。','历史偏好覆盖这次要求，或个人审美改写项目身份。','回到这个顺序；本次例外可以记录，但不会擅自改成长期规则。']
       ],
-      artifacts:['需求与交付历史','评分与高分案例','长期偏好记录','个人方法草稿','个人偏好设置和正式个人方法'],
-      blocks:['反馈没有绑定真实版本','低分原因需要你补充','个人方法的使用范围未确认','命中的个人方法无法读取或已经过期'],
-      next:['按反馈返修当前任务','确认个人方法的使用范围','把个人资料复制到另一个项目 Workspace'],
-      evidence:'Primary tools: workspace-user-feedback + workspace-personal-skill\n默认: user/manifest.json enabled=false\n优先级: 当前要求 > 项目事实/Baseline > Personal Skill/Preference > 公共默认\n加载: registry first, matched skill body only'
+      artifacts:['需求与交付历史','评分与高分案例','长期偏好记录','个人方法草稿','个人偏好设置和正式个人方法','可选共享提交与回执'],
+      blocks:['反馈没有绑定真实版本','低分原因需要你补充','个人方法的使用范围未确认','命中的个人方法无法读取或已经过期','共享内容没有当前任务证据或没有你的确认'],
+      next:['按反馈返修当前任务','确认个人方法的使用范围','确认后共享一条候选内容','把个人资料复制到另一个项目 Workspace'],
+      evidence:'Primary tools: workspace-user-feedback + workspace-personal-skill\n可选共享: workspace-collection；先展示候选，再由用户确认\n默认: user/manifest.json enabled=false\n优先级: 当前要求 > 项目事实/Baseline > Personal Skill/Preference > 公共默认\n加载: registry first, matched skill body only'
     }
   ];
 
