@@ -228,7 +228,7 @@
         <li><button class="nav-button active" data-view="home"><span class="nav-num">→</span><span class="nav-title">选择任务</span></button></li>
         <li><button class="nav-button" data-view="optimizer"><span class="nav-num">写</span><span class="nav-title">提示词优化器</span></button></li>
       </ul>
-      <div class="nav-label">十个模块</div>
+      <div class="nav-label">十一个模块</div>
       <ul class="nav-list" id="moduleNav"></ul>
       <div class="nav-label">共用操作</div>
       <ul class="nav-list">
@@ -247,7 +247,7 @@
           </div>
         </div>
         <div class="quick-start" aria-label="使用 Workspace 的五个步骤">
-          <div class="quick-step"><span class="step-num">01</span><b>选任务</b><p>从下面十个模块中选择。</p></div>
+          <div class="quick-step"><span class="step-num">01</span><b>选任务</b><p>从下面十一个模块中选择。</p></div>
           <div class="quick-step"><span class="step-num">02</span><b>给素材</b><p>提供项目文件、原图和准确文案。</p></div>
           <div class="quick-step"><span class="step-num">03</span><b>定结果</b><p>说明要方案、提示词还是成品。</p></div>
           <div class="quick-step"><span class="step-num">04</span><b>做决定</b><p>在标出的位置确认方向。</p></div>
@@ -653,24 +653,41 @@ SHA-256
       evidence:'SOURCE_CONFIRMED: AGENTS.md 规定一个 Workspace 对应一个项目\nUSER_RULE: 这里的长期工作对象可以是具体项目、题材或风格\nRUNTIME_COMPATIBILITY: 三种用法复用现有初始化、Baseline、request 与交付链，不需要 workspace_mode 开关\nBOUNDARY: 当前任务的角色、Logo 与项目事实始终高于长期题材或风格规则'
     },
     {
-      id:'personal',num:'10',title:'个人 Skill 沉淀',display:'让反馈、偏好和个人方法影响后续任务',aliases:'个人skill 用户偏好 决策 反馈 评分 记忆 共享归集 collection shared personal skill user',
-      intro:'你对正式成品的明确反馈可以留给下一次使用。只有换到别的项目仍然成立的方法，才会记成个人规则；角色、Logo 和单次修改仍留在原项目里。',
-      suitable:'记录长期稳定偏好、复用高分方法、把明确反馈变成以后会自动加载的个人工作规则。',
-      inputs:'已经正式交付的版本、你给出的评分和反馈、换项目仍然成立的做法，以及一次使用范围选择。',
-      output:'每个版本的评分记录、长期偏好、个人方法草稿、已确认的个人方法，以及本次任务实际用到的内容。你也可以选择把已确认的内容共享到团队表。',
-      flow:['先完成正式交付','你评分并说明原因','判断是否能跨项目复用','你确认使用范围','以后按需自动使用'],
+      id:'feedback',num:'10',title:'反馈模块',display:'为正式交付评分，沉淀经验，并按你确认共享',aliases:'反馈 评分 交付评分 低分 高分 经验 共享归集 collection shared feedback rating user',
+      intro:'每次正式交付都可以单独留下评分和反馈。评分不影响成品是否完成；它让返修有依据，也让有效经验可以被保留或按你确认共享。',
+      suitable:'评价已交付的版本、说明低分原因和改法、保留高分案例，或把已有证据整理成可确认的共享候选。',
+      inputs:'已经实际交付的任务版本、你给出的 1–5 分和反馈；共享时还需要当前任务中已有的证据。',
+      output:'每个版本的评分状态、低分原因和改法、高分案例，以及可选的共享候选和提交回执。',
+      flow:['正式交付后登记','你给出评分','保存可追溯经验','确认后才共享','按反馈返修或继续'],
       branches:[
         {id:'feedback',name:'交付评分',copy:'每项任务的每个版本单独记录。1–3 分需要你说明哪里不好、希望怎么改；4–5 分会进入高分案例。'},
-        {id:'collection',name:'可选共享归集',copy:'想把已确认的提示词、经验、问题或建议共享到团队表时，先看候选；只有你确认后才发送。它不会改变任务、评分或个人方法。'},
-        {id:'preference',name:'长期偏好',copy:'只记录用户明确、长期稳定、跨任务可复用的偏好；当前要求始终覆盖历史。'},
-        {id:'skill',name:'个人方法',copy:'完整做法先形成草稿，再由你确认一次使用范围：所有任务，或指定的几类任务。'},
-        {id:'load',name:'开始任务时使用',copy:'你开启个人偏好后，Codex 只读取当前任务真正用得上的个人方法。'}
+        {id:'collection',name:'可选共享归集',copy:'想把当前任务已有的提示词、经验、问题或建议共享到团队表时，先看候选；只有你确认后才发送。它不会改变任务、评分或个人方法。'}
       ],
       nodes:[
         ['先登记正式交付','codex','文件完成正式登记后，按任务和版本建立一条待评分记录。','反馈永远对应一个真实版本，不会漂到后来的成品。','你已经收到文件，但它还没有完成正式登记。','先记为待交付；同一版本正式登记后自动对上。'],
         ['你给出评分','user','对实际交付给 1–5 分，也可以暂时不评分。','分数只来自你，Codex 不会代填默认值。','给了 1–3 分，却没有说明原因或希望怎样改。','Codex 只追问缺少的原因或改法。'],
         ['分别保存低分和高分经验','codex','低分记录问题与改法；4–5 分进入高分案例。','以后能查清哪个版本为什么好，或为什么需要返修。','旧版本的反馈被误绑到新成品。','继续绑定原版本，不自动搬到新版本。'],
         ['可选：共享已确认的内容','joint','只从当前任务中已有的证据整理提示词、经验、问题或建议。先展示候选；你确认后才发送。','共享内容仍能追到原任务和版本，也不会反过来改写你的任务、评分或个人方法。','材料不属于当前任务、证据已经变化，或你还没确认。','先补齐或重新确认；不发送。'],
+        ['按反馈继续','joint','把这次反馈用于返修当前任务，或把跨项目仍有用的方法交给个人方法模块。','当前成品、评分和后续做法各自保留清楚边界。','把一次性修改直接当成所有任务的长期规则。','只把明确、长期稳定且可复用的做法交给个人方法模块。']
+      ],
+      artifacts:['需求与交付历史','评分与低分改法','高分案例','可选共享候选、提交与回执'],
+      blocks:['反馈没有绑定真实版本','低分原因或改法需要你补充','共享内容没有当前任务证据或没有你的确认'],
+      next:['按反馈返修当前任务','记录一条长期偏好','把可复用做法整理为个人方法','确认后共享一条候选内容'],
+      evidence:'Primary: workspace-user-feedback\n可选共享: workspace-collection；先展示候选，再由用户确认\n边界: 评分不阻塞完成；共享不改变任务、评分或个人方法\n证据: 只使用当前 Request、revision、产物、反馈和用户原话'
+    },
+    {
+      id:'personal',num:'11',title:'个人 Skill 沉淀',display:'把可复用反馈变成以后按需使用的个人方法',aliases:'个人skill 用户偏好 决策 记忆 personal skill preference user',
+      intro:'只有换到别的项目仍然成立的方法，才会记成个人规则；角色、Logo 和单次修改仍留在原项目里。',
+      suitable:'记录长期稳定偏好，把明确反馈整理成个人方法，并决定它在哪些任务中自动使用。',
+      inputs:'明确、长期稳定、跨项目可复用的做法，以及一次使用范围选择。',
+      output:'长期偏好、个人方法草稿、已确认的个人方法，以及本次任务实际用到的内容。',
+      flow:['判断能否跨项目复用','整理为个人方法草稿','你确认使用范围','按需读取并应用','当前要求始终优先'],
+      branches:[
+        {id:'preference',name:'长期偏好',copy:'只记录用户明确、长期稳定、跨任务可复用的偏好；当前要求始终覆盖历史。'},
+        {id:'skill',name:'个人方法',copy:'完整做法先形成草稿，再由你确认一次使用范围：所有任务，或指定的几类任务。'},
+        {id:'load',name:'开始任务时使用',copy:'你开启个人偏好后，Codex 只读取当前任务真正用得上的个人方法。'}
+      ],
+      nodes:[
         ['判断是不是长期偏好','joint','检查这条反馈是否明确、长期稳定、换到其他项目仍然有用，并确定适用范围。','留下的是会影响以后选择的方法，不是一次性备注。','把某个项目的角色、Logo、禁用内容或单次修改写成个人偏好。','这些内容留在原项目或当前任务。'],
         ['整理成个人方法草稿','codex','当反馈已经形成完整做法时，写成一份包含适用范围、具体动作和判断标准的草稿。','它是一套可执行方法，不只是“更高级”“更有冲击力”这类形容词。','把一句局部偏好扩大成所有任务都要遵守的规则。','缩小适用范围，保持你的原意。'],
         ['你确认使用范围','user','选择所有任务都用，或只在指定任务类型中使用。这个选择只需要确认一次。','使用范围被正式记录，同时开启个人偏好。','让你从一份已经过期、包含不存在任务的旧清单里选择。','重新读取当前任务清单，再让你确认。'],
@@ -679,10 +696,10 @@ SHA-256
         ['在制作前应用个人方法','codex','进入专业制作前，确认当前流程确实可以使用这条方法，而且文件版本没有变化。','个人方法会在真正做决定前生效。','方法用错任务、来源不明或文件已经过期。','重新匹配和读取，不绕过检查。'],
         ['发生冲突时按顺序决定','joint','先听你这次明确说的，再看项目事实和视觉基准，然后才用长期个人偏好和默认做法。','你这次的明确要求永远排第一。','历史偏好覆盖这次要求，或个人审美改写项目身份。','回到这个顺序；本次例外可以记录，但不会擅自改成长期规则。']
       ],
-      artifacts:['需求与交付历史','评分与高分案例','长期偏好记录','个人方法草稿','个人偏好设置和正式个人方法','可选共享提交与回执'],
-      blocks:['反馈没有绑定真实版本','低分原因需要你补充','个人方法的使用范围未确认','命中的个人方法无法读取或已经过期','共享内容没有当前任务证据或没有你的确认'],
-      next:['按反馈返修当前任务','确认个人方法的使用范围','确认后共享一条候选内容','把个人资料复制到另一个项目 Workspace'],
-      evidence:'Primary tools: workspace-user-feedback + workspace-personal-skill\n可选共享: workspace-collection；先展示候选，再由用户确认\n默认: user/manifest.json enabled=false\n优先级: 当前要求 > 项目事实/Baseline > Personal Skill/Preference > 公共默认\n加载: registry first, matched skill body only'
+      artifacts:['长期偏好记录','个人方法草稿','个人偏好设置和正式个人方法','本次任务命中的个人方法'],
+      blocks:['个人方法的使用范围未确认','命中的个人方法无法读取或已经过期','把项目事实或单次修改误写为个人偏好'],
+      next:['按反馈返修当前任务','确认个人方法的使用范围','把个人资料复制到另一个项目 Workspace'],
+      evidence:'Primary tools: workspace-user-feedback + workspace-personal-skill\n默认: user/manifest.json enabled=false\n优先级: 当前要求 > 项目事实/Baseline > Personal Skill/Preference > 公共默认\n加载: registry first, matched skill body only'
     }
   ];
 
@@ -799,7 +816,7 @@ SHA-256
     const decisions=m.nodes.filter(x=>x[1]!=='codex').map(x=>plain(x[0])).join('、')||'没有额外确认点';
     moduleView.innerHTML=`
       <div class="module-head">
-        <div class="module-id">${m.num} / 10</div>
+        <div class="module-id">${m.num} / ${modules.length}</div>
         <div class="module-title-row"><h1>${esc(m.title)}</h1></div>
         <p class="module-lead">${esc(plain(m.display))}。${esc(plain(m.intro))}</p>
         <ol class="module-flow" aria-label="这一类工作的简要流程">${m.flow.map(x=>`<li>${esc(plain(x))}</li>`).join('')}</ol>
