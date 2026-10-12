@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="InfiniteBOT Codex Workspace v8.64 操作地图：十类视觉生产任务的输入、节点、参与点、失败恢复与正式交付。">
-  <title>InfiniteBOT Codex Workspace｜v8.64 操作地图</title>
+  <meta name="description" content="InfiniteBOT Codex Workspace v8.65 操作地图：十类视觉生产任务的输入、节点、参与点、失败恢复与正式交付。">
+  <title>InfiniteBOT Codex Workspace｜v8.65 操作地图</title>
   <style>
     :root{
       --bg:#090909;--surface:#10100f;--surface-2:#161614;--surface-3:#1d1c19;
@@ -216,7 +216,7 @@
         <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></div>
       </div>
       <div class="top-actions">
-        <span class="version">当前版本 v8.64</span>
+        <span class="version">当前版本 v8.65</span>
         <button class="tool-button" id="optimizerBtn">优化需求</button>
         <button class="tool-button" id="themeBtn" aria-label="切换深浅主题">浅色</button>
       </div>
@@ -357,7 +357,7 @@
           <h2>证据状态</h2>
           <p class="intro">这些标记只用于查证页面内容。</p>
           <div class="legend">
-            <div><b>VERIFIED</b><p>可从 v8.64 正式文件直接确认。</p></div>
+            <div><b>VERIFIED</b><p>可从 v8.65 正式文件直接确认。</p></div>
             <div><b>INFERRED</b><p>由多个现有步骤整理得出。</p></div>
           </div>
         </div>
@@ -373,10 +373,10 @@
           <h2>这页依据哪个版本</h2>
           <div class="evidence-body">
             <div class="code-block">Release
-releases/InfiniteBOT-Codex-Workspace-v8.64.zip
+releases/InfiniteBOT-Codex-Workspace-v8.65.zip
 
 SHA-256
-64655364788a15348fdf8081dfbd1f6d21725f70460a383cf27207670e5eb353</div>
+aa66a065f1c4bf10048824995cb8c1202b88c92dc8536ccccd3e65a1fe32991f</div>
             <div class="code-block">当前版本包含
 24 个生产能力
 21 类任务入口
@@ -384,11 +384,11 @@ SHA-256
 可选的个人偏好层
 
 新人操作页
-与 v8.64 正式版本对齐</div>
+与 v8.65 正式版本对齐</div>
           </div>
         </div>
       </section>
-      <footer class="footer"><b>InfiniteBOT Codex Workspace · v8.64</b><span>页面内容与当前正式版本对齐</span></footer>
+      <footer class="footer"><b>InfiniteBOT Codex Workspace · v8.65</b><span>页面内容与当前正式版本对齐</span></footer>
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -436,7 +436,8 @@ SHA-256
         {id:'social',name:'社群 / 活动图',copy:'没有真实奖励时走纯视觉画面；有真实奖品、道具或礼包时，必须使用真实资产框，不让模型重画。'},
         {id:'gameplay',name:'玩法图',copy:'必须有真实玩法来源、玩家动作和可见结果。画面像游戏截图，不等于玩法已经成立。'},
         {id:'interactive',name:'互动图',copy:'需要真实玩法参考或明确规则，并让可交互对象、反馈和完成状态在画面中可读。'},
-        {id:'remix',name:'二创 / 改图',copy:'逐张说清哪些保留、哪些借用、哪些替换、哪些忽略。可以借做法，不能搬竞品角色、界面、剧情和品牌符号。'}
+        {id:'remix',name:'二创 / 改图',copy:'逐张说清哪些保留、哪些借用、哪些替换、哪些忽略。可以借做法，不能搬竞品角色、界面、剧情和品牌符号。'},
+        {id:'safety',name:'内容安全改写',copy:'请求里同时有可保留的创意和高风险细节时，保留角色、关系、救援目标、构图与氛围，删除或改成非图示性的伤害细节，再输出一份可直接使用的完整提示词。'}
       ],
       nodes:[
         ['先说要做到哪一步','joint','确认这次要成品、方向、需求文档还是完整提示词。','目标、载体和最后要拿到的东西已经说清。','同一项任务里出现互相冲突的交付目标。','保留一个主结果；研究和分析仍放在这项任务里。'],
@@ -446,13 +447,14 @@ SHA-256
         ['把文字要求变成画面','codex','确定主体关系、前后景、动作、镜头、光色、材质和阅读顺序。','下一位制作人员不用重新猜画面怎么组成。','还停在“有冲击力、像这个项目”这类空话。','改成看得见的动作、位置、关系和结果。'],
         ['为每张图写完整提示词','codex','每张图单独写一份可直接使用的提示词，并绑到对应素材。','不会出现“同上”或还要补填的占位符。','一份通用提示词套所有图，或关键要求散落在别处。','只重写受影响的那张提示词。'],
         ['生成或编辑图片','codex','检查模型、输入图、尺寸和提示词后，再调用生成服务。','得到有来源记录的真实原图。','模型不可用、输入图错误、尺寸不支持或提示词未绑定。','修正对应输入，不重做已经确认的方向。'],
+        ['内容安全拦截时改写一次','codex','如果生成服务明确返回内容安全拦截，保留可安全表达的创意核心，删除或非图示化高风险细节，并用新的提示词、请求和输出路径再试一次。','安全改写不会整单拒绝，也不会把内容安全错误当成断线反复重连。','安全版本再次被拦截，或只是换同义词试探过滤规则。','停止本轮调用并说明生成服务边界，不继续换模型或盲试。'],
         ['看首版，确认方向','joint','打开首版，检查方向、角色、构图、信息和局部质量。','你可以确认继续，或指出具体问题。','主事件、项目事实或角色身份错误。','回到最早出错的那一步，不整条链重做。'],
         ['补正式文字、Logo 和道具','codex','用正式资产替换模型不擅长的文字、Logo、界面、奖励和道具。','品牌和文字不再依赖模型碰运气。','Logo 被重画、文字乱码、奖励版本错误。','换回正式资产，只重做排版和合成。'],
         ['做多语言和尺寸版本','codex','从确认过的母版做不同语言和尺寸，检查安全区、裁切和长文案。','所有版本保持同一角色、方向和视觉重点。','关键人物被裁，文案溢出，换语言后身份也变了。','只改排版、裁切和合成，不重开视觉方向。'],
         ['复核并正式交付','codex','检查文件、尺寸、文案、资产和生成记录；需要时再做一次独立画面复核。','通过检查的文件被登记为正式版本。','画面检查未通过，或交付清单缺文件。','先修具体问题，再重新检查；工作文件不当成正式交付。']
       ],
       artifacts:['确认后的需求','视觉需求文档与画面说明','逐图提示词包和对应记录','生成原图和生成记录','最终检查与交付清单'],
-      blocks:['玩法或互动规则没有可靠来源','关键角色、Logo 或道具缺失','参考图用途互相冲突','生成失败或画面检查未通过'],
+      blocks:['玩法或互动规则没有可靠来源','关键角色、Logo 或道具缺失','参考图用途互相冲突','安全改写后仍被生成服务拦截','生成失败或画面检查未通过'],
       next:['把成品做成多语言和多尺寸版本','确认方向后补齐正式制作说明','把反馈登记为返修或长期偏好'],
       evidence:'Primary: wxian-image-production\nAPI: image-generation-api\n概念前置: sicza-game-concept-lab（需要探索时）\n分支: new-generation / image-edit / video / resize / localization / composite / postprocess-chain / visual-brief-only / prompt-only'
     },
