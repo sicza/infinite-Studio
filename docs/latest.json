@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "channel": "stable",
-  "latest_version": "V8.74",
-  "release_filename": "InfiniteBOT-Codex-Workspace-v8.74.zip",
-  "release_sha256": "b108f08920d6a5ae2305eb95ab2bf5de7c3461a618eeaf94ba9f63dc4bdc9856",
-  "published_at": "2026-11-16T11:56:28.588744+00:00"
+  "latest_version": "V8.75",
+  "release_filename": "InfiniteBOT-Codex-Workspace-v8.75.zip",
+  "release_sha256": "7a47281adac715bf1d5ed56ede98a8f3f64c008369597e5cacf851200cbf5208",
+  "published_at": "2026-11-17T03:26:06.700851+00:00"
 }
